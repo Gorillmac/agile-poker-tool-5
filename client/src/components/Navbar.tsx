@@ -12,6 +12,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { getInitials } from '@/lib/utils';
 
 export const Navbar: React.FC = () => {
@@ -80,6 +81,8 @@ export const Navbar: React.FC = () => {
         </div>
         
         <div className="flex items-center space-x-4">
+          <ThemeToggle />
+          
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -247,6 +250,10 @@ export const Navbar: React.FC = () => {
             </div>
             
             <div className="w-full pt-6 flex flex-col space-y-4">
+              <div className="flex justify-center mb-2">
+                <ThemeToggle />
+              </div>
+              
               {user ? (
                 <button 
                   onClick={handleLogout}

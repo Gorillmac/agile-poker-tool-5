@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Switch, Route } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -40,6 +41,20 @@ function Router() {
 }
 
 function App() {
+  // Add script to check system preference or saved theme preference
+  useEffect(() => {
+    // Check for saved theme preference or use system preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Apply dark mode if saved preference is dark or if system prefers dark and no saved preference
+    if (savedTheme === 'dark' || (!savedTheme && systemDarkMode)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>

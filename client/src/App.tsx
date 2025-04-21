@@ -5,9 +5,12 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { ProtectedRoute } from "@/components/ProtectedRoute";
+import { AuthProvider } from "@/hooks/use-auth";
 import Home from "@/pages/Home";
 import Register from "@/pages/Register";
 import Login from "@/pages/Login";
+import Dashboard from "@/pages/Dashboard";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -19,6 +22,7 @@ function Router() {
           <Route path="/" component={Home} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
+          <ProtectedRoute path="/dashboard" component={Dashboard} />
           <Route component={NotFound} />
         </Switch>
       </main>
@@ -31,8 +35,10 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Toaster />
-        <Router />
+        <AuthProvider>
+          <Toaster />
+          <Router />
+        </AuthProvider>
       </TooltipProvider>
     </QueryClientProvider>
   );

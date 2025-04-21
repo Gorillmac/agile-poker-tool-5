@@ -12,6 +12,9 @@ import Register from "@/pages/Register";
 import Login from "@/pages/Login";
 import Dashboard from "@/pages/Dashboard";
 import Profile from "@/pages/Profile";
+import PlanningSession from "@/pages/PlanningSession";
+import TeamsPage from "@/pages/TeamsPage";
+import AnalyticsPage from "@/pages/AnalyticsPage";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -25,6 +28,9 @@ function Router() {
           <Route path="/login" component={Login} />
           <ProtectedRoute path="/dashboard" component={Dashboard} />
           <ProtectedRoute path="/profile" component={Profile} />
+          <ProtectedRoute path="/sessions" component={PlanningSession} />
+          <ProtectedRoute path="/teams" component={TeamsPage} />
+          <ProtectedRoute path="/analytics" component={AnalyticsPage} />
           <Route component={NotFound} />
         </Switch>
       </main>

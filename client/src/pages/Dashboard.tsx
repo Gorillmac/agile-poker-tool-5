@@ -170,9 +170,11 @@ const Dashboard: React.FC = () => {
             </CardContent>
             
             <CardFooter className="border-t pt-4">
-              <Button variant="outline" className="w-full">
-                <Settings className="mr-2 h-4 w-4" /> 
-                Profile Settings
+              <Button variant="outline" className="w-full" asChild>
+                <Link href="/profile">
+                  <Settings className="mr-2 h-4 w-4" /> 
+                  Profile Settings
+                </Link>
               </Button>
             </CardFooter>
           </Card>
@@ -184,30 +186,30 @@ const Dashboard: React.FC = () => {
             </CardHeader>
             <CardContent className="pb-2">
               <nav className="space-y-1">
-                <Link href="/sessions">
-                  <a className="flex items-center px-3 py-2 text-gray-700 rounded-md hover:bg-white/80 transition-colors">
+                <div className="block">
+                  <Link href="/sessions" className="flex items-center px-3 py-2 text-gray-700 rounded-md hover:bg-white/80 transition-colors">
                     <ListChecks className="mr-2 h-5 w-5 text-primary-600" />
                     <span>All Sessions</span>
-                  </a>
-                </Link>
-                <Link href="/teams">
-                  <a className="flex items-center px-3 py-2 text-gray-700 rounded-md hover:bg-white/80 transition-colors">
+                  </Link>
+                </div>
+                <div className="block">
+                  <Link href="/teams" className="flex items-center px-3 py-2 text-gray-700 rounded-md hover:bg-white/80 transition-colors">
                     <Users className="mr-2 h-5 w-5 text-primary-600" />
                     <span>My Teams</span>
-                  </a>
-                </Link>
-                <Link href="/analytics">
-                  <a className="flex items-center px-3 py-2 text-gray-700 rounded-md hover:bg-white/80 transition-colors">
+                  </Link>
+                </div>
+                <div className="block">
+                  <Link href="/analytics" className="flex items-center px-3 py-2 text-gray-700 rounded-md hover:bg-white/80 transition-colors">
                     <BarChart3 className="mr-2 h-5 w-5 text-primary-600" />
                     <span>Analytics</span>
-                  </a>
-                </Link>
-                <Link href="/settings">
-                  <a className="flex items-center px-3 py-2 text-gray-700 rounded-md hover:bg-white/80 transition-colors">
+                  </Link>
+                </div>
+                <div className="block">
+                  <Link href="/profile" className="flex items-center px-3 py-2 text-gray-700 rounded-md hover:bg-white/80 transition-colors">
                     <Settings className="mr-2 h-5 w-5 text-primary-600" />
-                    <span>Settings</span>
-                  </a>
-                </Link>
+                    <span>Profile Settings</span>
+                  </Link>
+                </div>
               </nav>
             </CardContent>
           </Card>

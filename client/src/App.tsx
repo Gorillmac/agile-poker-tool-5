@@ -11,6 +11,7 @@ import Home from "@/pages/Home";
 import Register from "@/pages/Register";
 import Login from "@/pages/Login";
 import Dashboard from "@/pages/Dashboard";
+import Profile from "@/pages/Profile";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -23,6 +24,7 @@ function Router() {
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
           <ProtectedRoute path="/dashboard" component={Dashboard} />
+          <ProtectedRoute path="/profile" component={Profile} />
           <Route component={NotFound} />
         </Switch>
       </main>

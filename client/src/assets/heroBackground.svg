@@ -1,0 +1,24 @@
+<svg width="1440" height="800" viewBox="0 0 1440 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.1" />
+      <stop offset="50%" stop-color="#4f46e5" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.1" />
+    </linearGradient>
+    <radialGradient id="grad2" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#grad1)" />
+  <circle cx="400" cy="300" r="300" fill="url(#grad2)" />
+  <circle cx="1100" cy="600" r="400" fill="url(#grad2)" />
+  
+  <!-- Grid Pattern -->
+  <path d="M0 80h1440M0 160h1440M0 240h1440M0 320h1440M0 400h1440M0 480h1440M0 560h1440M0 640h1440M0 720h1440" stroke="#4f46e5" stroke-width="0.5" stroke-opacity="0.1" />
+  <path d="M80 0v800M160 0v800M240 0v800M320 0v800M400 0v800M480 0v800M560 0v800M640 0v800M720 0v800M800 0v800M880 0v800M960 0v800M1040 0v800M1120 0v800M1200 0v800M1280 0v800M1360 0v800" stroke="#4f46e5" stroke-width="0.5" stroke-opacity="0.1" />
+  
+  <!-- Decorative Elements -->
+  <path d="M0,400 Q360,350 720,400 T1440,400" fill="none" stroke="#2563eb" stroke-width="1" stroke-opacity="0.2" />
+  <path d="M0,450 Q360,500 720,450 T1440,450" fill="none" stroke="#4f46e5" stroke-width="1" stroke-opacity="0.2" />
+</svg>

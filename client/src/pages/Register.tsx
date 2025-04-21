@@ -1,16 +1,19 @@
-import React from 'react';
-import { Link } from 'wouter';
+import React, { useEffect } from 'react';
+import { Link, useLocation } from 'wouter';
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Loader2 } from "lucide-react";
+import { useAuth } from "@/hooks/use-auth";
+import { useToast } from "@/hooks/use-toast";
 
 const registerSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
   email: z.string().email({ message: "Please enter a valid email address" }),
-  password: z.string().min(8, { message: "Password must be at least 8 characters" }),
+  password: z.string().min(6, { message: "Password must be at least 6 characters" }),
   confirmPassword: z.string(),
 }).refine((data) => data.password === data.confirmPassword, {
   message: "Passwords do not match",
@@ -20,6 +23,10 @@ const registerSchema = z.object({
 type RegisterFormValues = z.infer<typeof registerSchema>;
 
 const Register: React.FC = () => {
+  const { user, register: registerUser, isLoading } = useAuth();
+  const { toast } = useToast();
+  const [, setLocation] = useLocation();
+
   const form = useForm<RegisterFormValues>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -30,14 +37,36 @@ const Register: React.FC = () => {
     },
   });
 
-  function onSubmit(data: RegisterFormValues) {
-    console.log(data);
-    // Here you would typically call an API to register the user
+  // Redirect if already logged in
+  useEffect(() => {
+    if (user) {
+      setLocation("/dashboard");
+    }
+  }, [user, setLocation]);
+
+  async function onSubmit(data: RegisterFormValues) {
+    try {
+      // In our mock auth system, we use the "name" field as the username
+      await registerUser(data.name, data.email, data.password, data.name);
+      toast({
+        title: "Registration successful!",
+        description: "Your account has been created.",
+        variant: "default",
+      });
+      setLocation("/dashboard");
+    } catch (error) {
+      toast({
+        title: "Registration failed",
+        description: "An error occurred during registration.",
+        variant: "destructive",
+      });
+      console.error("Registration failed:", error);
+    }
   }
 
   return (
     <section className="px-4 sm:px-6 lg:px-8 py-16 max-w-5xl mx-auto">
-      <div className="glass-dark rounded-2xl overflow-hidden shadow-lg">
+      <div className="glass-dark rounded-2xl overflow-hidden shadow-glass">
         <div className="grid md:grid-cols-2">
           <div className="p-8 md:p-12">
             <h2 className="text-3xl font-bold text-white mb-6">Get Started Today</h2>
@@ -56,9 +85,10 @@ const Register: React.FC = () => {
                           placeholder="Enter your name" 
                           className="bg-white/10 border border-gray-700 text-white focus:ring-2 focus:ring-primary-500" 
                           {...field} 
+                          disabled={isLoading}
                         />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-red-300" />
                     </FormItem>
                   )}
                 />
@@ -75,9 +105,10 @@ const Register: React.FC = () => {
                           placeholder="you@example.com" 
                           className="bg-white/10 border border-gray-700 text-white focus:ring-2 focus:ring-primary-500" 
                           {...field} 
+                          disabled={isLoading}
                         />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-red-300" />
                     </FormItem>
                   )}
                 />
@@ -94,9 +125,10 @@ const Register: React.FC = () => {
                           placeholder="••••••••" 
                           className="bg-white/10 border border-gray-700 text-white focus:ring-2 focus:ring-primary-500" 
                           {...field} 
+                          disabled={isLoading}
                         />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-red-300" />
                     </FormItem>
                   )}
                 />
@@ -113,9 +145,10 @@ const Register: React.FC = () => {
                           placeholder="••••••••" 
                           className="bg-white/10 border border-gray-700 text-white focus:ring-2 focus:ring-primary-500" 
                           {...field} 
+                          disabled={isLoading}
                         />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-red-300" />
                     </FormItem>
                   )}
                 />
@@ -123,8 +156,16 @@ const Register: React.FC = () => {
                 <Button 
                   type="submit" 
                   className="w-full btn-gradient text-white font-medium py-3 px-4 rounded-lg"
+                  disabled={isLoading}
                 >
-                  Create Account
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Creating account...
+                    </>
+                  ) : (
+                    "Create Account"
+                  )}
                 </Button>
               </form>
             </Form>

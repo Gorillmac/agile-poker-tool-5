@@ -44,7 +44,7 @@ const Profile: React.FC = () => {
     email: user?.email || '',
     jobTitle: 'Product Owner',
     company: 'Acme Corp',
-    location: 'San Francisco, CA',
+    location: 'Pretoria North, Gauteng',
     bio: 'Product owner with 5+ years of experience in agile methodologies. Passionate about building great products with cross-functional teams.'
   });
 

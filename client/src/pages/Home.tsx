@@ -60,7 +60,7 @@ const Home: React.FC = () => {
       <section className="px-4 sm:px-6 lg:px-8 py-16 max-w-7xl mx-auto">
         <div className="glass rounded-2xl p-8 md:p-12 shadow-card animate-on-scroll transition-all duration-700 ease-out opacity-0 translate-y-10">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">How It Works</h2>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             <div className="card-hover bg-white/50 backdrop-blur-sm rounded-xl p-6 border border-white/50 shadow-card">
               <div className="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -72,7 +72,7 @@ const Home: React.FC = () => {
               <h3 className="text-xl font-semibold text-center text-gray-900 mb-3">Create a Session</h3>
               <p className="text-gray-700 text-center">Create a Planning Poker room and invite your team members to join remotely from anywhere.</p>
             </div>
-            
+
             <div className="card-hover bg-white/50 backdrop-blur-sm rounded-xl p-6 border border-white/50 shadow-card">
               <div className="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary-600" viewBox="0 0 20 20" fill="currentColor">
@@ -82,7 +82,7 @@ const Home: React.FC = () => {
               <h3 className="text-xl font-semibold text-center text-gray-900 mb-3">Estimate Together</h3>
               <p className="text-gray-700 text-center">Use real-time voting with Fibonacci cards and collaborate using our integrated whiteboard.</p>
             </div>
-            
+
             <div className="card-hover bg-white/50 backdrop-blur-sm rounded-xl p-6 border border-white/50 shadow-card">
               <div className="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary-600" viewBox="0 0 20 20" fill="currentColor">
@@ -100,9 +100,9 @@ const Home: React.FC = () => {
       <section className="px-4 sm:px-6 lg:px-8 py-16 max-w-7xl mx-auto">
         <div className="glass rounded-2xl p-8 md:p-12 shadow-card animate-on-scroll transition-all duration-700 ease-out opacity-0 translate-y-10">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Features Built for Agile Teams</h2>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="card-hover bg-white/50 backdrop-blur-sm rounded-xl p-6 border border-white/50 shadow-card">
+            <div className="card-hover bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-white/50 dark:border-gray-700/50 shadow-card transition-all duration-300 hover:shadow-card-hover">
               <div className="flex items-center mb-4">
                 <div className="bg-primary-100 p-3 rounded-lg">
                   <Rocket className="h-6 w-6 text-primary-600" />
@@ -111,8 +111,8 @@ const Home: React.FC = () => {
               </div>
               <p className="text-gray-700">Estimate tasks live with distributed teams using WebSockets for instant feedback.</p>
             </div>
-            
-            <div className="card-hover bg-white/50 backdrop-blur-sm rounded-xl p-6 border border-white/50 shadow-card">
+
+            <div className="card-hover bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-white/50 dark:border-gray-700/50 shadow-card transition-all duration-300 hover:shadow-card-hover">
               <div className="flex items-center mb-4">
                 <div className="bg-primary-100 p-3 rounded-lg">
                   <Users className="h-6 w-6 text-primary-600" />
@@ -121,8 +121,8 @@ const Home: React.FC = () => {
               </div>
               <p className="text-gray-700">Host sessions with voting, re-voting, and automated statistical analysis of results.</p>
             </div>
-            
-            <div className="card-hover bg-white/50 backdrop-blur-sm rounded-xl p-6 border border-white/50 shadow-card">
+
+            <div className="card-hover bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-white/50 dark:border-gray-700/50 shadow-card transition-all duration-300 hover:shadow-card-hover">
               <div className="flex items-center mb-4">
                 <div className="bg-primary-100 p-3 rounded-lg">
                   <Trello className="h-6 w-6 text-primary-600" />
@@ -131,8 +131,8 @@ const Home: React.FC = () => {
               </div>
               <p className="text-gray-700">Import cards from Trello, sync estimates back, and keep everything up to date automatically.</p>
             </div>
-            
-            <div className="card-hover bg-white/50 backdrop-blur-sm rounded-xl p-6 border border-white/50 shadow-card">
+
+            <div className="card-hover bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-white/50 dark:border-gray-700/50 shadow-card transition-all duration-300 hover:shadow-card-hover">
               <div className="flex items-center mb-4">
                 <div className="bg-primary-100 p-3 rounded-lg">
                   <Edit3 className="h-6 w-6 text-primary-600" />
@@ -141,8 +141,8 @@ const Home: React.FC = () => {
               </div>
               <p className="text-gray-700">Use our integrated whiteboard with drawing tools, sticky notes, and real-time updates.</p>
             </div>
-            
-            <div className="card-hover bg-white/50 backdrop-blur-sm rounded-xl p-6 border border-white/50 shadow-card">
+
+            <div className="card-hover bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-white/50 dark:border-gray-700/50 shadow-card transition-all duration-300 hover:shadow-card-hover">
               <div className="flex items-center mb-4">
                 <div className="bg-primary-100 p-3 rounded-lg">
                   <FileText className="h-6 w-6 text-primary-600" />
@@ -151,8 +151,8 @@ const Home: React.FC = () => {
               </div>
               <p className="text-gray-700">Export your sessions to CSV or styled PDF reports with charts and whiteboard snapshots.</p>
             </div>
-            
-            <div className="card-hover bg-white/50 backdrop-blur-sm rounded-xl p-6 border border-white/50 shadow-card">
+
+            <div className="card-hover bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-white/50 dark:border-gray-700/50 shadow-card transition-all duration-300 hover:shadow-card-hover">
               <div className="flex items-center mb-4">
                 <div className="bg-primary-100 p-3 rounded-lg">
                   <Bell className="h-6 w-6 text-primary-600" />

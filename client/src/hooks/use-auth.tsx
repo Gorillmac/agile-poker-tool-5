@@ -48,13 +48,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       // In a real app, this would be an API call
       await new Promise(resolve => setTimeout(resolve, 1000));
-      // Simulate successful registration
-      setUser({
-        id: 1,
-        username,
-        name: name || "New User",
-        email
-      });
+      // Simulate successful registration without auto-login
+      return;
     } catch (error) {
       console.error("Registration failed:", error);
       throw error;

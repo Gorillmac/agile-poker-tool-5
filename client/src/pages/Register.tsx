@@ -46,14 +46,13 @@ const Register: React.FC = () => {
 
   async function onSubmit(data: RegisterFormValues) {
     try {
-      // In our mock auth system, we use the "name" field as the username
       await registerUser(data.name, data.email, data.password, data.name);
       toast({
         title: "Registration successful!",
-        description: "Your account has been created.",
+        description: "Please login with your credentials.",
         variant: "default",
       });
-      setLocation("/dashboard");
+      setLocation("/login");
     } catch (error) {
       toast({
         title: "Registration failed",

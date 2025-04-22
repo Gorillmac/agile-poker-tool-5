@@ -1,78 +1,65 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import React, { createContext, useContext, useState } from 'react';
 
-type User = {
+interface User {
   id: number;
   username: string;
-  name?: string;
-  email?: string;
-};
+  name: string;
+  email: string;
+}
 
-type AuthContextType = {
+interface AuthContextType {
   user: User | null;
   isLoading: boolean;
-  login: (username: string, password: string) => Promise<void>;
-  register: (username: string, email: string, password: string, name?: string) => Promise<void>;
+  login: (email: string, password: string) => Promise<void>;
+  register: (username: string, email: string, password: string, name: string) => Promise<void>;
   logout: () => void;
-};
+}
 
-export const AuthContext = createContext<AuthContextType | null>(null);
+const AuthContext = createContext<AuthContextType | null>(null);
 
-export function AuthProvider({ children }: { children: ReactNode }) {
+export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Simulate a login
-  const login = async (username: string, password: string) => {
+  const login = async (email: string, password: string) => {
     setIsLoading(true);
     try {
-      // In a real app, this would be an API call
+      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
-      // Simulate successful login
       setUser({
         id: 1,
-        username,
-        name: "Demo User",
-        email: `${username}@example.com`
+        username: email.split('@')[0],
+        name: 'Test User',
+        email
       });
     } catch (error) {
-      console.error("Login failed:", error);
+      console.error('Login failed:', error);
       throw error;
     } finally {
       setIsLoading(false);
     }
   };
 
-  // Simulate a registration
-  const register = async (username: string, email: string, password: string, name?: string) => {
+  const register = async (username: string, email: string, password: string, name: string) => {
     setIsLoading(true);
     try {
-      // In a real app, this would be an API call
+      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
-      // Simulate successful registration without auto-login
       return;
     } catch (error) {
-      console.error("Registration failed:", error);
+      console.error('Registration failed:', error);
       throw error;
     } finally {
       setIsLoading(false);
     }
   };
 
-  // Simulate a logout
   const logout = () => {
     setUser(null);
   };
 
   return (
-    <AuthContext.Provider
-      value={{
-        user,
-        isLoading,
-        login,
-        register,
-        logout
-      }}
-    >
+    <AuthContext.Provider value={{ user, isLoading, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   );
@@ -81,7 +68,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 export function useAuth() {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error("useAuth must be used within an AuthProvider");
+    throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;
 }

@@ -183,7 +183,7 @@ const Register: React.FC = () => {
                     SJ
                   </div>
                   <div className="ml-3">
-                    <p className="text-white font-medium">Sarah Johnson</p>
+                    <p className="text-white font-medium">Ofentse Fenyane</p>
                     <p className="text-gray-300 text-sm">Product Owner</p>
                   </div>
                 </div>

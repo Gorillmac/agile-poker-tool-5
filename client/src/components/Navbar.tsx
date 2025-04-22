@@ -45,17 +45,17 @@ export const Navbar: React.FC = () => {
               <Users className="h-6 w-6 text-white" />
             </div>
             <div className="ml-3">
-              <span className="text-xl font-bold gradient-text">Agile Poker</span>
+              <span className="text-xl font-bold gradient-text">agile-poker</span>
               <span className="block text-xs text-gray-500 -mt-1">Planning Tool</span>
             </div>
           </Link>
         </div>
-        
+
         <div className="hidden md:flex items-center space-x-8">
           <Link href="/" className={`nav-link font-medium ${isActive('/') ? 'text-primary-600 active' : 'text-gray-700 hover:text-primary-600'}`}>
             Home
           </Link>
-          
+
           {user ? (
             <>
               <Link href="/dashboard" className={`nav-link font-medium ${isActive('/dashboard') ? 'text-primary-600 active' : 'text-gray-700 hover:text-primary-600'}`}>
@@ -79,10 +79,10 @@ export const Navbar: React.FC = () => {
             </>
           )}
         </div>
-        
+
         <div className="flex items-center space-x-4">
           <ThemeToggle />
-          
+
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -138,7 +138,7 @@ export const Navbar: React.FC = () => {
               </Link>
             </>
           )}
-          
+
           <button 
             className="md:hidden glass-light p-2 rounded-md"
             onClick={toggleMobileMenu}
@@ -164,7 +164,7 @@ export const Navbar: React.FC = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-        
+
         {user && (
           <div className="mb-8 flex flex-col items-center">
             <Avatar className="h-16 w-16 mb-2 border-2 border-white/20">
@@ -179,7 +179,7 @@ export const Navbar: React.FC = () => {
             </div>
           </div>
         )}
-        
+
         <div className="glass-primary/30 p-8 rounded-2xl shadow-card max-w-md w-full mx-4">
           <div className="flex flex-col items-center space-y-6 text-xl divide-y divide-white/10">
             <div className="w-full py-2">
@@ -190,7 +190,7 @@ export const Navbar: React.FC = () => {
               >
                 Home
               </Link>
-              
+
               {user ? (
                 <>
                   <Link 
@@ -248,12 +248,12 @@ export const Navbar: React.FC = () => {
                 </>
               )}
             </div>
-            
+
             <div className="w-full pt-6 flex flex-col space-y-4">
               <div className="flex justify-center mb-2">
                 <ThemeToggle />
               </div>
-              
+
               {user ? (
                 <button 
                   onClick={handleLogout}

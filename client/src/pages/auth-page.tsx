@@ -73,13 +73,17 @@ export default function AuthPage() {
   async function onLoginSubmit(data: LoginFormValues) {
     try {
       await loginMutation.mutateAsync(data);
+      
       toast({
         title: "Login successful",
         description: "Welcome back!",
       });
       
-      // Force navigation after successful login
-      window.location.href = "/dashboard";
+      // Give a small delay to ensure the toast is visible
+      setTimeout(() => {
+        // Force navigation after successful login
+        window.location.href = "/dashboard";
+      }, 500);
     } catch (error) {
       console.error("Login error:", error);
       toast({
@@ -99,13 +103,17 @@ export default function AuthPage() {
         email: data.email,
         password: data.password,
       });
+      
       toast({
         title: "Registration successful",
         description: "Your account has been created",
       });
       
-      // Force navigation after successful registration
-      window.location.href = "/dashboard";
+      // Give a small delay to ensure the toast is visible
+      setTimeout(() => {
+        // Force navigation after successful registration
+        window.location.href = "/dashboard";
+      }, 500);
     } catch (error) {
       console.error("Registration error:", error);
       toast({

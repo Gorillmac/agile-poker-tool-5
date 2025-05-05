@@ -580,13 +580,13 @@ ${completedStories.map(story => `
                         {isVotingRevealed && (
                           <div>
                             <div className="text-center py-6">
-                              <h3 className="text-lg text-gray-700 mb-2">Howzit Estimation, Né?</h3>
+                              <h3 className="text-lg text-gray-700 mb-2">Estimation Result</h3>
                               <div className="inline-flex items-center justify-center h-20 w-20 bg-primary-50 rounded-full border-2 border-primary-300">
                                 <span className="text-3xl font-bold text-primary-700">{getConsensusEstimate() || '?'}</span>
                               </div>
                               
                               <p className="mt-2 text-sm text-gray-500">
-                                {calculateConsensus()}% team agreement - {calculateConsensus() > 75 ? 'Lekker, bru!' : 'Eish, no consensus!'}
+                                {calculateConsensus()}% team agreement - {calculateConsensus() > 75 ? 'Consensus achieved!' : 'No consensus reached'}
                               </p>
                             </div>
                             
@@ -676,9 +676,9 @@ ${completedStories.map(story => `
       <AlertDialog open={isDiscussionOpen} onOpenChange={setIsDiscussionOpen}>
         <AlertDialogContent className="max-w-3xl">
           <AlertDialogHeader>
-            <AlertDialogTitle>Let's Have a Lekker Chat</AlertDialogTitle>
+            <AlertDialogTitle>Team Discussion</AlertDialogTitle>
             <AlertDialogDescription>
-              Eish! The team doesn't have consensus on this story. Let's have a proper chat to sort this out and reach agreement, South African style.
+              The team doesn't have consensus on this story. Let's discuss to understand different perspectives and reach agreement.
             </AlertDialogDescription>
           </AlertDialogHeader>
           
@@ -725,9 +725,9 @@ ${completedStories.map(story => `
       <AlertDialog open={showReportDialog} onOpenChange={setShowReportDialog}>
         <AlertDialogContent className="max-w-4xl">
           <AlertDialogHeader>
-            <AlertDialogTitle>Lekker Session Report, Bru!</AlertDialogTitle>
+            <AlertDialogTitle>Session Report</AlertDialogTitle>
             <AlertDialogDescription>
-              Review and export the summary of this planning session. This report is so lekker, even your boss will be happy with it!
+              Review and export the summary of this planning session. This report contains all story estimates for your records.
             </AlertDialogDescription>
           </AlertDialogHeader>
           

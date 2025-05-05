@@ -84,7 +84,7 @@ export default function WaitingRoomPage() {
     
     if (secondsToStart <= 0) {
       // Navigate to active session
-      setLocation(`/sessions/${sessionId}/active`);
+      setLocation(`/sessions/${sessionId}`);
       return;
     }
     

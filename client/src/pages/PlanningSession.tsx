@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, useLocation } from "wouter";
 import { useAuth } from "@/hooks/use-auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -8,6 +8,17 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
 import { Progress } from "@/components/ui/progress";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { 
   Users, 
   BarChart3, 
@@ -18,7 +29,13 @@ import {
   Zap,
   Flag,
   CheckCircle2,
-  MoreVertical
+  MoreVertical,
+  FileText,
+  RefreshCw,
+  Download,
+  PieChart,
+  ArrowRight,
+  ArrowLeft
 } from "lucide-react";
 import { getInitials } from "@/lib/utils";
 
@@ -58,6 +75,15 @@ const PlanningSession = () => {
   const [isVotingActive, setIsVotingActive] = useState(false);
   const [timer, setTimer] = useState(60); // 60 second timer
   const [timerActive, setTimerActive] = useState(false);
+  
+  // New states for activity diagram flow
+  const [isDiscussionOpen, setIsDiscussionOpen] = useState(false);
+  const [discussionNotes, setDiscussionNotes] = useState('');
+  const [isExportDialogOpen, setIsExportDialogOpen] = useState(false);
+  const [showReportDialog, setShowReportDialog] = useState(false);
+  const [sessionReport, setSessionReport] = useState('');
+  const [isRevoting, setIsRevoting] = useState(false);
+  const reportRef = useRef<HTMLDivElement>(null);
 
   // Mock data
   const [participants, setParticipants] = useState<Participant[]>([
@@ -250,6 +276,66 @@ const PlanningSession = () => {
       // Odd number of votes, return the middle one
       return numericVotes[mid].toString();
     }
+  };
+
+  // Check if there's consensus (aligned with activity diagram)
+  const hasConsensus = () => {
+    return calculateConsensus() >= 75; // 75% or more agreement is considered consensus
+  };
+
+  // Start discussion when there's disagreement 
+  const startDiscussion = () => {
+    setIsDiscussionOpen(true);
+  };
+
+  // Close discussion and start revoting
+  const startRevote = () => {
+    setIsDiscussionOpen(false);
+    setIsRevoting(true);
+    startVoting(); // Restart the voting process
+  };
+
+  // Generate session report based on completed stories
+  const generateReport = () => {
+    const completedStories = stories.filter(s => s.status === 'completed');
+    const totalPoints = completedStories.reduce((total, story) => 
+      total + (parseInt(story.finalEstimate || '0') || 0), 0
+    );
+    
+    const report = `
+# Agile Planning Poker Session Report
+**Date:** ${new Date().toLocaleDateString()}
+**Participants:** ${participants.map(p => p.name).join(', ')}
+
+## Estimated Stories
+${completedStories.map(story => `
+### ${story.title}
+**Description:** ${story.description}
+**Final Estimate:** ${story.finalEstimate} points
+`).join('\n')}
+
+## Summary
+**Total Stories:** ${completedStories.length}
+**Total Story Points:** ${totalPoints}
+**Average Points Per Story:** ${(totalPoints / completedStories.length).toFixed(1)}
+    `;
+    
+    setSessionReport(report);
+    setShowReportDialog(true);
+  };
+  
+  // Export the report 
+  const exportReport = () => {
+    // Create a downloadable text file
+    const element = document.createElement('a');
+    const file = new Blob([sessionReport], {type: 'text/plain'});
+    element.href = URL.createObjectURL(file);
+    element.download = `agile-poker-report-${new Date().toISOString().split('T')[0]}.txt`;
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+    
+    setShowReportDialog(false);
   };
 
   return (
@@ -505,19 +591,43 @@ const PlanningSession = () => {
                             </div>
                             
                             <div className="flex justify-center space-x-4 mt-4">
-                              <Button 
-                                variant="outline"
-                                onClick={() => startVoting()}
-                              >
-                                Vote Again
-                              </Button>
-                              
-                              <Button 
-                                onClick={() => saveEstimation(getConsensusEstimate() || '?')}
-                                className="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700"
-                              >
-                                Accept & Continue
-                              </Button>
+                              {hasConsensus() ? (
+                                <>
+                                  <Button 
+                                    variant="outline"
+                                    onClick={() => startVoting()}
+                                  >
+                                    <RefreshCw className="h-4 w-4 mr-1" />
+                                    Vote Again
+                                  </Button>
+                                  
+                                  <Button 
+                                    onClick={() => saveEstimation(getConsensusEstimate() || '?')}
+                                    className="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700"
+                                  >
+                                    <CheckCircle2 className="h-4 w-4 mr-1" />
+                                    Accept & Continue
+                                  </Button>
+                                </>
+                              ) : (
+                                <>
+                                  <Button 
+                                    variant="outline"
+                                    onClick={startDiscussion}
+                                  >
+                                    <MessageSquare className="h-4 w-4 mr-1" />
+                                    Discuss Discrepancies
+                                  </Button>
+                                  
+                                  <Button 
+                                    onClick={() => startRevote()}
+                                    className="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700"
+                                  >
+                                    <RefreshCw className="h-4 w-4 mr-1" />
+                                    Revote
+                                  </Button>
+                                </>
+                              )}
                             </div>
                           </div>
                         )}
@@ -531,26 +641,111 @@ const PlanningSession = () => {
                 <h3 className="text-xl font-medium text-gray-700 mb-2">Session Complete</h3>
                 <p className="text-gray-600">All user stories have been estimated.</p>
                 
-                <Button 
-                  className="mt-6 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700"
-                  onClick={() => {
-                    // Reset stories
-                    setStories(prevStories => 
-                      prevStories.map((story, index) => ({
-                        ...story,
-                        status: index === 0 ? 'voting' : 'pending',
-                        finalEstimate: undefined
-                      }))
-                    );
-                  }}
-                >
-                  Start New Session
-                </Button>
+                <div className="flex flex-col items-center mt-6 space-y-4">
+                  <Button 
+                    onClick={generateReport}
+                    className="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700"
+                  >
+                    <FileText className="h-4 w-4 mr-1" />
+                    Generate Report
+                  </Button>
+                  
+                  <Button 
+                    variant="outline"
+                    onClick={() => {
+                      // Reset stories
+                      setStories(prevStories => 
+                        prevStories.map((story, index) => ({
+                          ...story,
+                          status: index === 0 ? 'voting' : 'pending',
+                          finalEstimate: undefined
+                        }))
+                      );
+                    }}
+                  >
+                    Start New Session
+                  </Button>
+                </div>
               </div>
             )}
           </div>
         </div>
       </div>
+      
+      {/* Discussion Dialog */}
+      <AlertDialog open={isDiscussionOpen} onOpenChange={setIsDiscussionOpen}>
+        <AlertDialogContent className="max-w-3xl">
+          <AlertDialogHeader>
+            <AlertDialogTitle>Team Discussion</AlertDialogTitle>
+            <AlertDialogDescription>
+              The team doesn't have consensus on this story. Discuss the different perspectives to reach a common understanding.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          
+          <div className="py-4">
+            <div className="mb-4">
+              <h3 className="text-sm font-medium mb-2">Discussion Notes</h3>
+              <Textarea 
+                placeholder="Capture key points from the discussion..." 
+                className="min-h-[120px]"
+                value={discussionNotes}
+                onChange={(e) => setDiscussionNotes(e.target.value)}
+              />
+            </div>
+            
+            <div className="p-4 bg-amber-50 rounded-md border border-amber-200">
+              <h3 className="text-sm font-medium flex items-center text-amber-800">
+                <PieChart className="h-4 w-4 mr-1" />
+                Voting Distribution
+              </h3>
+              <div className="mt-2 grid grid-cols-6 gap-2">
+                {Array.from(new Set(participants.filter(p => p.hasVoted).map(p => p.vote))).map(vote => {
+                  const count = participants.filter(p => p.vote === vote).length;
+                  return (
+                    <div key={vote} className="text-center">
+                      <div className="bg-white rounded-md border shadow-sm h-8 w-8 flex items-center justify-center mx-auto">
+                        <span className="font-bold">{vote}</span>
+                      </div>
+                      <div className="text-xs mt-1 text-gray-600">{count} votes</div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+          
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={startRevote}>Start Revote</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+      
+      {/* Report Dialog */}
+      <AlertDialog open={showReportDialog} onOpenChange={setShowReportDialog}>
+        <AlertDialogContent className="max-w-4xl">
+          <AlertDialogHeader>
+            <AlertDialogTitle>Session Report</AlertDialogTitle>
+            <AlertDialogDescription>
+              Review and export the summary of this planning session.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          
+          <div className="py-4">
+            <div className="bg-white border rounded-md p-4 max-h-[400px] overflow-y-auto font-mono text-sm whitespace-pre-wrap" ref={reportRef}>
+              {sessionReport}
+            </div>
+          </div>
+          
+          <AlertDialogFooter>
+            <AlertDialogCancel>Close</AlertDialogCancel>
+            <AlertDialogAction onClick={exportReport}>
+              <Download className="h-4 w-4 mr-1" />
+              Export Report
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 };

@@ -39,9 +39,11 @@ const Dashboard: React.FC = () => {
           </p>
         </div>
         <div className="mt-4 md:mt-0">
-          <Button className="btn-gradient flex items-center">
-            <PlusCircle className="mr-2 h-4 w-4" />
-            New Session
+          <Button className="btn-gradient flex items-center" asChild>
+            <Link href="/sessions">
+              <PlusCircle className="mr-2 h-4 w-4" />
+              Lekker New Session, Bru!
+            </Link>
           </Button>
         </div>
       </div>
@@ -52,25 +54,29 @@ const Dashboard: React.FC = () => {
         <div className="lg:col-span-2 space-y-8">
           {/* Quick actions */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Card className="glass-light card-hover">
-              <CardContent className="p-6 flex flex-col items-center text-center">
-                <div className="bg-primary-100 p-3 rounded-full mb-4">
-                  <Users className="h-6 w-6 text-primary-700" />
-                </div>
-                <h3 className="font-medium">Create Team</h3>
-                <p className="text-sm text-gray-500 mt-1">Invite members to collaborate</p>
-              </CardContent>
-            </Card>
+            <Link href="/teams">
+              <Card className="glass-light card-hover cursor-pointer">
+                <CardContent className="p-6 flex flex-col items-center text-center">
+                  <div className="bg-primary-100 p-3 rounded-full mb-4">
+                    <Users className="h-6 w-6 text-primary-700" />
+                  </div>
+                  <h3 className="font-medium">Create Team</h3>
+                  <p className="text-sm text-gray-500 mt-1">Invite your okes to collaborate</p>
+                </CardContent>
+              </Card>
+            </Link>
             
-            <Card className="glass-light card-hover">
-              <CardContent className="p-6 flex flex-col items-center text-center">
-                <div className="bg-primary-100 p-3 rounded-full mb-4">
-                  <PlusCircle className="h-6 w-6 text-primary-700" />
-                </div>
-                <h3 className="font-medium">New Session</h3>
-                <p className="text-sm text-gray-500 mt-1">Start a planning session</p>
-              </CardContent>
-            </Card>
+            <Link href="/sessions">
+              <Card className="glass-light card-hover cursor-pointer">
+                <CardContent className="p-6 flex flex-col items-center text-center">
+                  <div className="bg-primary-100 p-3 rounded-full mb-4">
+                    <PlusCircle className="h-6 w-6 text-primary-700" />
+                  </div>
+                  <h3 className="font-medium">New Session</h3>
+                  <p className="text-sm text-gray-500 mt-1">Start a planning session, lekker!</p>
+                </CardContent>
+              </Card>
+            </Link>
             
             <Card className="glass-light card-hover">
               <CardContent className="p-6 flex flex-col items-center text-center">
@@ -125,8 +131,10 @@ const Dashboard: React.FC = () => {
                         <Users className="h-4 w-4 text-gray-500 mr-1" />
                         <span className="text-sm text-gray-500">{session.participants}</span>
                       </div>
-                      <Button variant="ghost" size="icon" className="rounded-full">
-                        <ChevronRight className="h-5 w-5" />
+                      <Button variant="ghost" size="icon" className="rounded-full" asChild>
+                        <Link href={`/sessions/${session.id}/waiting`}>
+                          <ChevronRight className="h-5 w-5" />
+                        </Link>
                       </Button>
                     </div>
                   </div>
@@ -135,7 +143,9 @@ const Dashboard: React.FC = () => {
             </CardContent>
             
             <CardFooter className="pt-0">
-              <Button variant="outline" className="w-full">View All Sessions</Button>
+              <Button variant="outline" className="w-full" asChild>
+                <Link href="/sessions">View All Sessions, Bru!</Link>
+              </Button>
             </CardFooter>
           </Card>
         </div>

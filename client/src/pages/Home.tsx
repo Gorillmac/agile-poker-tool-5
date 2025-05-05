@@ -46,10 +46,10 @@ const Home: React.FC = () => {
             whiteboards, and exports — all in one powerful tool.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/sessionnew" className="btn-gradient text-white font-medium text-lg px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:translate-y-[-2px]">
-              🚀 Start New Session
+            <Link href="/sessions" className="btn-gradient text-white font-medium text-lg px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:translate-y-[-2px]">
+              Join A Session
             </Link>
-            <Link href="/register" className="bg-white text-primary-700 border-2 border-primary-500 font-medium text-lg px-8 py-3 rounded-full hover:bg-primary-50 transition-all duration-300">
+            <Link href="/auth" className="bg-white text-primary-700 border-2 border-primary-500 font-medium text-lg px-8 py-3 rounded-full hover:bg-primary-50 transition-all duration-300">
               Create Account
             </Link>
           </div>

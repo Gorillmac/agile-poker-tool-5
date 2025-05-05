@@ -24,7 +24,7 @@ const ProtectedComponent = ({ component: Component }: { component: React.Compone
   }
 
   if (!user) {
-    return <Redirect to="/login" />;
+    return <Redirect to="/auth" />;
   }
 
   return <Component />;

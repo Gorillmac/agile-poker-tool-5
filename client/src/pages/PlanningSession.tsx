@@ -39,8 +39,8 @@ import {
 } from "lucide-react";
 import { getInitials } from "@/lib/utils";
 
-// Card values for planning poker with South African flair
-const CARD_VALUES = ['0', '1', '2', '3', '5', '8', '13', '21', '34', 'Eish?', '☕ Rooibos'];
+// Card values for planning poker
+const CARD_VALUES = ['0', '1', '2', '3', '5', '8', '13', '21', '34', '?', '☕'];
 
 type Participant = {
   id: number;
@@ -97,20 +97,20 @@ const PlanningSession = () => {
   const [stories, setStories] = useState<UserStory[]>([
     { 
       id: 1, 
-      title: "Load Shedding-Resilient Authentication", 
-      description: "As a South African user, I want to be able to register and login even during load shedding so I can access the system regardless of power interruptions.", 
+      title: "Resilient Authentication System", 
+      description: "As a user, I want to be able to register and login even during service interruptions so I can access the system reliably.", 
       status: 'voting'
     },
     { 
       id: 2, 
-      title: "Biltong Dashboard for Sprint Metrics", 
-      description: "As a project manager in Joburg, I want to see team velocity and sprint progress on my dashboard so I can track project health while enjoying biltong.", 
+      title: "Dashboard for Sprint Metrics", 
+      description: "As a project manager, I want to see team velocity and sprint progress on my dashboard so I can track project health effectively.", 
       status: 'pending'
     },
     { 
       id: 3, 
-      title: "Integration with SnapScan and other SA Payment Methods", 
-      description: "As a South African user, I want to pay using SnapScan, Zapper, and EFT so I can choose my preferred local payment method without hassles.", 
+      title: "Integration with Common Payment Methods", 
+      description: "As a user, I want to pay using various payment methods so I can choose my preferred payment option without hassles.", 
       status: 'pending'
     },
   ]);
@@ -303,24 +303,21 @@ const PlanningSession = () => {
     );
     
     const report = `
-# Lekker Agile Planning Poker Session Report
+# Agile Planning Poker Session Report
 **Date:** ${new Date().toLocaleDateString()}
-**Participants (Okes):** ${participants.map(p => p.name).join(', ')}
-**Location:** South Africa
+**Participants:** ${participants.map(p => p.name).join(', ')}
 
 ## Estimated Stories
 ${completedStories.map(story => `
 ### ${story.title}
 **Description:** ${story.description}
-**Final Estimate:** ${story.finalEstimate} points - Jislaaik!
+**Final Estimate:** ${story.finalEstimate} points
 `).join('\n')}
 
 ## Summary
 **Total Stories:** ${completedStories.length}
 **Total Story Points:** ${totalPoints}
 **Average Points Per Story:** ${(totalPoints / completedStories.length).toFixed(1)}
-**Biltong Consumed:** Plenty
-**Load Shedding Interruptions:** 0 (we hope!)
     `;
     
     setSessionReport(report);
@@ -346,7 +343,7 @@ ${completedStories.map(story => `
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
           <div className="flex justify-between items-center">
-            <h1 className="text-3xl font-bold text-primary-900">Howzit Planning Poker Session</h1>
+            <h1 className="text-3xl font-bold text-primary-900">Planning Poker Session</h1>
             
             <div className="flex items-center space-x-2">
               <Badge variant="outline" className="flex items-center gap-1 py-1">
@@ -514,7 +511,7 @@ ${completedStories.map(story => `
                     
                     <div className="mt-6">
                       <div className="mb-2 flex justify-between items-center">
-                        <span className="text-sm text-gray-500">Team Agreement (Lekker!)</span>
+                        <span className="text-sm text-gray-500">Team Agreement</span>
                         <span className="text-sm font-medium">{calculateConsensus()}%</span>
                       </div>
                       <Progress value={calculateConsensus()} className="h-2" />

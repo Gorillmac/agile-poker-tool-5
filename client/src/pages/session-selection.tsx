@@ -25,27 +25,27 @@ type Session = {
 const EXISTING_SESSIONS: Session[] = [
   {
     id: 1,
-    name: "Lekker Sprint 42 Planning",
-    team: "Joburg Frontend Team",
-    createdBy: "Lerato Nkosi",
+    name: "Sprint 42 Planning",
+    team: "Frontend Development Team",
+    createdBy: "Emily Johnson",
     participants: 5,
     status: "active",
     lastActive: new Date(Date.now() - 25 * 60 * 1000), // 25 minutes ago
   },
   {
     id: 2,
-    name: "Backlog Refinement (No Load Shedding!)",
-    team: "Cape Town Product",
-    createdBy: "Mandla Mbeki",
+    name: "Backlog Refinement",
+    team: "Product Team",
+    createdBy: "Michael Davis",
     participants: 8,
     status: "waiting",
     lastActive: new Date(Date.now() - 5 * 60 * 1000), // 5 minutes ago
   },
   {
     id: 3,
-    name: "Tech Debt Prioritization (Post-Braai)",
-    team: "Durban Backend Team",
-    createdBy: "Themba Naidoo",
+    name: "Tech Debt Prioritization",
+    team: "Backend Development Team",
+    createdBy: "Sarah Wilson",
     participants: 6,
     status: "scheduled",
     scheduledFor: new Date(Date.now() + 3600 * 1000), // 1 hour from now
@@ -78,9 +78,9 @@ export default function SessionSelectionPage() {
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="mb-8 text-center">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Lekker Planning Poker Sessions</h1>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Planning Poker Sessions</h1>
             <p className="text-gray-600">
-              Join an existing session or create a new one to start estimating with your team - no load shedding, no problem!
+              Join an existing session or create a new one to start estimating with your team
             </p>
           </div>
           

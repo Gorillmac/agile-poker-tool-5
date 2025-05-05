@@ -41,6 +41,7 @@ function Router() {
           <ProtectedRoute path="/dashboard" component={Dashboard} />
           <ProtectedRoute path="/profile" component={Profile} />
           <ProtectedRoute path="/analytics" component={AnalyticsPage} />
+          <ProtectedRoute path="/export-analytics" component={ExportReportPage} />
           <ProtectedRoute path="/teams" component={TeamsPage} />
           <ProtectedRoute path="/teams/create" component={TeamFormationPage} />
           

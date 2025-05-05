@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useLocation } from "wouter";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { 
   BarChart, 
   Bar, 
@@ -28,7 +30,8 @@ import {
   TrendingUp,
   ArrowUpRight,
   ArrowDownRight,
-  HelpCircle
+  HelpCircle,
+  Download
 } from "lucide-react";
 
 // Types
@@ -111,7 +114,7 @@ const CustomTooltip = ({ active, payload, label }: TooltipProps<number, string>)
   return null;
 };
 
-const AnalyticsPage = () => {
+function AnalyticsPage() {
   const [timeRange, setTimeRange] = useState<string>("last-6-sprints");
 
   return (
@@ -123,7 +126,7 @@ const AnalyticsPage = () => {
             <p className="text-gray-600 mt-1">Track your team's agile metrics and performance</p>
           </div>
           
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-3">
             <span className="text-sm text-gray-500">Time Range:</span>
             <Select value={timeRange} onValueChange={setTimeRange}>
               <SelectTrigger className="w-40">
@@ -136,6 +139,14 @@ const AnalyticsPage = () => {
                 <SelectItem value="year-to-date">Year to Date</SelectItem>
               </SelectContent>
             </Select>
+            
+            <Button 
+              className="bg-gradient-to-r from-primary-500 to-primary-600"
+              onClick={() => window.location.href = "/export-analytics"}
+            >
+              <Download className="h-4 w-4 mr-2" />
+              Export Analytics
+            </Button>
           </div>
         </div>
         

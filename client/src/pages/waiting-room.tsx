@@ -157,7 +157,7 @@ export default function WaitingRoomPage() {
                   
                   {secondsToStart !== null && (
                     <div className="p-4 bg-amber-50 rounded-md border border-amber-200 text-center">
-                      <p className="text-amber-800 font-medium">Jislaaik, We're Starting In</p>
+                      <p className="text-amber-800 font-medium">Session Starting In</p>
                       <p className="text-2xl font-bold text-amber-600">{secondsToStart}s</p>
                     </div>
                   )}
@@ -170,7 +170,7 @@ export default function WaitingRoomPage() {
                         disabled={secondsToStart !== null}
                       >
                         <PlayCircle className="h-4 w-4 mr-1" />
-                        Let's Go, Okes!
+                        Start Session
                       </Button>
                     ) : (
                       <Button 
@@ -181,10 +181,10 @@ export default function WaitingRoomPage() {
                         {isReady ? (
                           <>
                             <CheckCircle2 className="h-4 w-4 mr-1" />
-                            I'm Lekker Ready, Bru!
+                            I'm Ready
                           </>
                         ) : (
-                          "I'm Ready, Let's Go!"
+                          "Mark as Ready"
                         )}
                       </Button>
                     )}
@@ -198,15 +198,15 @@ export default function WaitingRoomPage() {
               <Card className="glass h-full">
                 <CardHeader className="flex flex-row items-center justify-between">
                   <div>
-                    <CardTitle>The Okes</CardTitle>
+                    <CardTitle>Participants</CardTitle>
                     <CardDescription>
-                      {participants.length} lekker teammates in this session
+                      {participants.length} team members in this session
                     </CardDescription>
                   </div>
                   
                   <Button variant="outline" size="sm">
                     <UserPlus className="h-4 w-4 mr-1" />
-                    Invite More Okes
+                    Invite Members
                   </Button>
                 </CardHeader>
                 
@@ -232,7 +232,7 @@ export default function WaitingRoomPage() {
                               )}
                             </div>
                             <p className="text-sm text-gray-500">
-                              {participant.isReady ? "Lekker Ready!" : "Still Chilling..."}
+                              {participant.isReady ? "Ready" : "Not Ready"}
                             </p>
                           </div>
                         </div>

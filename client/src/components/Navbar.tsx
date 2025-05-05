@@ -130,10 +130,10 @@ export const Navbar: React.FC = () => {
             </DropdownMenu>
           ) : (
             <>
-              <Link href="/login" className="text-primary-700 font-medium hover:text-primary-800 transition-colors duration-300">
+              <Link href="/auth" className="text-primary-700 font-medium hover:text-primary-800 transition-colors duration-300">
                 Login
               </Link>
-              <Link href="/register" className="btn-gradient text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 scale-hover">
+              <Link href="/auth?tab=register" className="btn-gradient text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 scale-hover">
                 Sign Up
               </Link>
             </>
@@ -265,14 +265,14 @@ export const Navbar: React.FC = () => {
               ) : (
                 <>
                   <Link 
-                    href="/login" 
+                    href="/auth" 
                     className="w-full text-center text-white border border-white/30 py-2 px-4 rounded-lg hover:bg-white/10 transition-colors duration-300"
                     onClick={toggleMobileMenu}
                   >
                     Login
                   </Link>
                   <Link 
-                    href="/register" 
+                    href="/auth?tab=register" 
                     className="w-full text-center btn-gradient text-white font-medium py-3 px-6 rounded-lg shadow-lg"
                     onClick={toggleMobileMenu}
                   >

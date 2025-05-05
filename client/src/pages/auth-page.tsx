@@ -35,7 +35,13 @@ type LoginFormValues = z.infer<typeof loginSchema>;
 type RegisterFormValues = z.infer<typeof registerSchema>;
 
 export default function AuthPage() {
-  const [activeTab, setActiveTab] = useState<string>("login");
+  // Check URL params for tab selection
+  const [activeTab, setActiveTab] = useState<string>(() => {
+    // Check if we have a tab parameter in the URL
+    const searchParams = new URLSearchParams(window.location.search);
+    const tabParam = searchParams.get('tab');
+    return tabParam === 'register' ? 'register' : 'login';
+  });
   const { user, loginMutation, registerMutation } = useAuth();
   const [location, setLocation] = useLocation();
   const { toast } = useToast();

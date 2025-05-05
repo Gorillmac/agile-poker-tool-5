@@ -25,27 +25,27 @@ type Session = {
 const EXISTING_SESSIONS: Session[] = [
   {
     id: 1,
-    name: "Sprint 42 Planning",
-    team: "Frontend Team",
-    createdBy: "Alex Thompson",
+    name: "Lekker Sprint 42 Planning",
+    team: "Joburg Frontend Team",
+    createdBy: "Lerato Nkosi",
     participants: 5,
     status: "active",
     lastActive: new Date(Date.now() - 25 * 60 * 1000), // 25 minutes ago
   },
   {
     id: 2,
-    name: "Product Backlog Refinement",
-    team: "Core Product",
-    createdBy: "Maria Garcia",
+    name: "Backlog Refinement (No Load Shedding!)",
+    team: "Cape Town Product",
+    createdBy: "Mandla Mbeki",
     participants: 8,
     status: "waiting",
     lastActive: new Date(Date.now() - 5 * 60 * 1000), // 5 minutes ago
   },
   {
     id: 3,
-    name: "Tech Debt Prioritization",
-    team: "Backend Team",
-    createdBy: "James Wilson",
+    name: "Tech Debt Prioritization (Post-Braai)",
+    team: "Durban Backend Team",
+    createdBy: "Themba Naidoo",
     participants: 6,
     status: "scheduled",
     scheduledFor: new Date(Date.now() + 3600 * 1000), // 1 hour from now
@@ -78,9 +78,9 @@ export default function SessionSelectionPage() {
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="mb-8 text-center">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Planning Poker Sessions</h1>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Lekker Planning Poker Sessions</h1>
             <p className="text-gray-600">
-              Join an existing session or create a new one to start estimating with your team
+              Join an existing session or create a new one to start estimating with your team - no load shedding, no problem!
             </p>
           </div>
           
@@ -134,7 +134,7 @@ export default function SessionSelectionPage() {
                                 onClick={() => handleJoinSession(session.id)}
                                 className="bg-gradient-to-r from-primary-500 to-primary-600"
                               >
-                                Join Session
+                                Join Now, Bru!
                               </Button>
                             </div>
                           </div>
@@ -191,7 +191,7 @@ export default function SessionSelectionPage() {
                               variant="outline"
                               onClick={() => handleJoinSession(session.id)}
                             >
-                              Join When Starts
+                              Save it for Later, Bru
                             </Button>
                           </div>
                         </div>
@@ -217,13 +217,13 @@ export default function SessionSelectionPage() {
               <TabsContent value="create" className="mt-0">
                 <form onSubmit={handleCreateSession} className="space-y-4 py-4">
                   <div className="space-y-2">
-                    <Label htmlFor="session-name">Session Name</Label>
-                    <Input id="session-name" placeholder="e.g., Sprint Planning 42" required />
+                    <Label htmlFor="session-name">Session Name (Make it Lekker!)</Label>
+                    <Input id="session-name" placeholder="e.g., Joburg Sprint Planning 42" required />
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="team">Team</Label>
-                    <Input id="team" placeholder="e.g., Frontend Team" required />
+                    <Label htmlFor="team">Team Name</Label>
+                    <Input id="team" placeholder="e.g., Cape Town Frontend Okes" required />
                   </div>
                   
                   <div className="grid grid-cols-2 gap-4">
@@ -241,7 +241,7 @@ export default function SessionSelectionPage() {
                   <div className="pt-4 flex justify-end">
                     <Button type="submit" className="bg-gradient-to-r from-primary-500 to-primary-600">
                       <PlayCircle className="h-4 w-4 mr-1" />
-                      Create New Session
+                      Create Lekker Session, Bru!
                     </Button>
                   </div>
                 </form>

@@ -23,21 +23,21 @@ import { useToast } from "@/hooks/use-toast";
 const SAMPLE_STORIES = [
   {
     id: 1,
-    title: "User Authentication Implementation",
-    description: "As a user, I want to be able to register, login, and manage my account so that I can access the system securely.",
+    title: "Load Shedding-Resilient Authentication",
+    description: "As a South African user, I want to be able to register and login even during load shedding so I can access the system regardless of power interruptions.",
     priority: "high",
-    externalId: "PROJ-123"
+    externalId: "SAFR-123"
   },
   {
     id: 2,
-    title: "Dashboard Analytics View",
-    description: "As a project manager, I want to see team velocity and sprint progress on my dashboard so I can track project health.",
+    title: "Biltong Dashboard for Sprint Metrics",
+    description: "As a project manager in Joburg, I want to see team velocity and sprint progress on my dashboard so I can track project health while enjoying biltong.",
     priority: "medium",
-    externalId: "PROJ-124"
+    externalId: "SAFR-124"
   },
   {
     id: 3,
-    title: "API Integration with Payment Gateway",
+    title: "Integration with SnapScan and other SA Payment Methods",
     description: "As a system administrator, I want to integrate with multiple payment processors so users can choose their preferred payment method.",
     priority: "high",
     externalId: "PROJ-125"

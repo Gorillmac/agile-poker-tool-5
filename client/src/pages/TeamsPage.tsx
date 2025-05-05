@@ -286,7 +286,13 @@ const TeamsPage = () => {
                     </div>
                     
                     <div className="flex space-x-2">
-                      <Button variant="outline" size="sm">
+                      <Button 
+                        variant="outline" 
+                        size="sm"
+                        onClick={() => {
+                          alert("Team settings feature coming soon!");
+                        }}
+                      >
                         <Settings className="h-4 w-4 mr-1" /> Settings
                       </Button>
                       

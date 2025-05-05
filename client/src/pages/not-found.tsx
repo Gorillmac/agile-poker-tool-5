@@ -42,7 +42,7 @@ export default function NotFound() {
         
         <div className="bg-gradient-to-r from-primary-500/20 to-secondary-500/20 py-4 px-8 border-t border-white/10">
           <p className="text-sm text-center text-gray-400">
-            Need help? <Link href="/contact" className="text-primary-400 hover:text-primary-300">Contact Support</Link>
+            Need help? <Link href="/" className="text-primary-400 hover:text-primary-300">Return to Home</Link>
           </p>
         </div>
       </div>

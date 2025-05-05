@@ -204,7 +204,13 @@ export default function WaitingRoomPage() {
                     </CardDescription>
                   </div>
                   
-                  <Button variant="outline" size="sm">
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    onClick={() => {
+                      alert("Invitation feature coming soon!");
+                    }}
+                  >
                     <UserPlus className="h-4 w-4 mr-1" />
                     Invite Members
                   </Button>

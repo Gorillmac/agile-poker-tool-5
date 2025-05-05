@@ -356,7 +356,7 @@ const Profile: React.FC = () => {
                         <Input id="confirm-password" type="password" />
                       </div>
                     </div>
-                    <Button>Update Password</Button>
+                    <Button onClick={() => alert("Password update feature coming soon!")}>Update Password</Button>
                   </div>
                   
                   <Separator />
@@ -366,7 +366,7 @@ const Profile: React.FC = () => {
                     <p className="text-sm text-gray-500">Permanently delete your account and all of your data</p>
                     <Button 
                       variant="destructive" 
-                      onClick={handleDeleteAccount}
+                      onClick={() => alert("Account deletion feature coming soon!")}
                     >
                       Delete Account
                     </Button>

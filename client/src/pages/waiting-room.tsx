@@ -14,18 +14,18 @@ import { getInitials } from "@/lib/utils";
 const SESSION_DATA = {
   id: 1,
   name: "Sprint 42 Planning",
-  team: "Cape Town Frontend Team",
-  createdBy: "Johannes Smit",
+  team: "Frontend Development Team",
+  createdBy: "John Smith",
   status: "waiting",
   readiness: 75, // 75% ready
 };
 
-// Mock participants with South African names
+// Mock participants
 const PARTICIPANTS = [
-  { id: 1, name: "Johannes Smit", avatar: undefined, isActive: true, isReady: true, isModerator: true },
-  { id: 2, name: "Lerato Mbeki", avatar: undefined, isActive: true, isReady: true, isModerator: false },
-  { id: 3, name: "Sipho Nkosi", avatar: undefined, isActive: true, isReady: true, isModerator: false },
-  { id: 4, name: "Thandi Zulu", avatar: undefined, isActive: true, isReady: false, isModerator: false },
+  { id: 1, name: "John Smith", avatar: undefined, isActive: true, isReady: true, isModerator: true },
+  { id: 2, name: "Emily Johnson", avatar: undefined, isActive: true, isReady: true, isModerator: false },
+  { id: 3, name: "Michael Davis", avatar: undefined, isActive: true, isReady: true, isModerator: false },
+  { id: 4, name: "Sarah Wilson", avatar: undefined, isActive: true, isReady: false, isModerator: false },
 ];
 
 export default function WaitingRoomPage() {
@@ -65,7 +65,7 @@ export default function WaitingRoomPage() {
     const timer = setTimeout(() => {
       const newParticipant = {
         id: 5,
-        name: "Pieter van der Merwe",
+        name: "Robert Taylor",
         avatar: undefined,
         isActive: true,
         isReady: false,

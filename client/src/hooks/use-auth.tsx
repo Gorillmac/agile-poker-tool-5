@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 import { useMutation, UseMutationResult } from '@tanstack/react-query';
+import { queryClient } from '@/lib/queryClient';
 
 interface User {
   id: number;

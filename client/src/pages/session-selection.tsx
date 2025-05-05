@@ -9,8 +9,20 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { CalendarDays, Users, Plus, PlayCircle, Clock } from "lucide-react";
 
+// Define session type
+type Session = {
+  id: number;
+  name: string;
+  team: string;
+  createdBy: string;
+  participants: number;
+  status: 'active' | 'waiting' | 'scheduled';
+  lastActive?: Date;
+  scheduledFor?: Date;
+};
+
 // Mock session data - would come from API in real application
-const EXISTING_SESSIONS = [
+const EXISTING_SESSIONS: Session[] = [
   {
     id: 1,
     name: "Sprint 42 Planning",
@@ -106,7 +118,7 @@ export default function SessionSelectionPage() {
                               <div className="flex items-center text-xs text-gray-500 mt-2">
                                 <Clock className="h-3 w-3 mr-1" />
                                 <span>
-                                  {session.status === "active" 
+                                  {session.status === "active" && session.lastActive
                                     ? `Started ${Math.round((Date.now() - session.lastActive.getTime()) / 60000)} minutes ago` 
                                     : "Waiting for moderator"}
                                 </span>

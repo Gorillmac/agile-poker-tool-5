@@ -116,6 +116,7 @@ const CustomTooltip = ({ active, payload, label }: TooltipProps<number, string>)
 
 function AnalyticsPage() {
   const [timeRange, setTimeRange] = useState<string>("last-6-sprints");
+  const [, setLocation] = useLocation();
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-primary-50 via-white to-primary-50">
@@ -142,7 +143,7 @@ function AnalyticsPage() {
             
             <Button 
               className="bg-gradient-to-r from-primary-500 to-primary-600"
-              onClick={() => window.location.href = "/export-analytics"}
+              onClick={() => setLocation("/export-analytics")}
             >
               <Download className="h-4 w-4 mr-2" />
               Export Analytics

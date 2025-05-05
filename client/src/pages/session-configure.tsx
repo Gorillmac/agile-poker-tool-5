@@ -23,24 +23,24 @@ import { useToast } from "@/hooks/use-toast";
 const SAMPLE_STORIES = [
   {
     id: 1,
-    title: "Load Shedding-Resilient Authentication",
-    description: "As a South African user, I want to be able to register and login even during load shedding so I can access the system regardless of power interruptions.",
+    title: "Offline-Resilient Authentication",
+    description: "As a user, I want to be able to register and login even during internet connectivity issues so I can access the system regardless of connection interruptions.",
     priority: "high",
-    externalId: "SAFR-123"
+    externalId: "FEAT-123"
   },
   {
     id: 2,
-    title: "Biltong Dashboard for Sprint Metrics",
-    description: "As a project manager in Joburg, I want to see team velocity and sprint progress on my dashboard so I can track project health while enjoying biltong.",
+    title: "Dashboard for Sprint Metrics",
+    description: "As a project manager, I want to see team velocity and sprint progress on my dashboard so I can track project health effectively.",
     priority: "medium",
-    externalId: "SAFR-124"
+    externalId: "FEAT-124"
   },
   {
     id: 3,
-    title: "Integration with SnapScan and other SA Payment Methods",
-    description: "As a South African user, I want to pay using SnapScan, Zapper, and EFT so I can choose my preferred local payment method without hassles.",
+    title: "Integration with Multiple Payment Methods",
+    description: "As a user, I want to pay using various payment platforms so I can choose my preferred payment method without hassles.",
     priority: "high",
-    externalId: "SAFR-125"
+    externalId: "FEAT-125"
   },
 ];
 
@@ -51,7 +51,7 @@ export default function SessionConfigurePage() {
   const [activeTab, setActiveTab] = useState<string>("setup");
   
   // State for session configuration
-  const [sessionName, setSessionName] = useState("Lekker Sprint 42 Planning");
+  const [sessionName, setSessionName] = useState("Sprint 42 Planning");
   const [votingSystem, setVotingSystem] = useState("fibonacci");
   const [timerEnabled, setTimerEnabled] = useState(true);
   const [timerDuration, setTimerDuration] = useState("60");
@@ -124,8 +124,8 @@ export default function SessionConfigurePage() {
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-primary-900">Configure Your Lekker Planning Session</h1>
-            <p className="text-gray-600 mt-2">Set up your session and add user stories to estimate - no rush, take your time, bru!</p>
+            <h1 className="text-3xl font-bold text-primary-900">Configure Your Planning Session</h1>
+            <p className="text-gray-600 mt-2">Set up your session and add user stories to estimate - take your time to set everything up properly.</p>
           </div>
           
           {/* Configuration Tabs */}
@@ -302,7 +302,7 @@ export default function SessionConfigurePage() {
                     </div>
                     
                     <Button onClick={handleAddManualStory}>
-                      Add Lekker Story, Bru!
+                      Add User Story
                     </Button>
                   </div>
                   
@@ -329,7 +329,7 @@ export default function SessionConfigurePage() {
           {/* Action Buttons */}
           <div className="flex justify-between">
             <Button variant="outline" onClick={() => setLocation("/sessions")}>
-              Ag No Man, Go Back
+              Go Back
             </Button>
             
             <div className="space-x-3">
@@ -338,16 +338,16 @@ export default function SessionConfigurePage() {
                 onClick={() => {
                   toast({
                     title: "Session saved",
-                    description: "Your lekker session configuration has been saved as a draft, bru!",
+                    description: "Your session configuration has been saved as a draft.",
                   });
                 }}
               >
                 <Save className="h-4 w-4 mr-2" />
-                Save for Later, Bru
+                Save for Later
               </Button>
               
               <Button onClick={handleStartSession}>
-                Aweh! Start This Session!
+                Start Session
               </Button>
             </div>
           </div>

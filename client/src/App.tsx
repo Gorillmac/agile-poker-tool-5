@@ -22,6 +22,8 @@ import SessionResultsPage from "@/pages/SessionResultsPage";
 import SessionHistoryPage from "@/pages/SessionHistoryPage";
 import ConflictResolutionPage from "@/pages/ConflictResolutionPage";
 import TeamFormationPage from "@/pages/TeamFormationPage";
+import ExportReportPage from "@/pages/ExportReportPage";
+import SprintAssignmentPage from "@/pages/SprintAssignmentPage";
 import TeamsPage from "@/pages/TeamsPage";
 import AnalyticsPage from "@/pages/AnalyticsPage";
 import NotFound from "@/pages/not-found";
@@ -47,6 +49,8 @@ function Router() {
           <ProtectedRoute path="/sessions/configure" component={SessionConfigure} />
           <ProtectedRoute path="/sessions/:sessionId/waiting" component={WaitingRoom} />
           <ProtectedRoute path="/sessions/:sessionId/results" component={SessionResultsPage} />
+          <ProtectedRoute path="/sessions/:sessionId/sprint-assignment" component={SprintAssignmentPage} />
+          <ProtectedRoute path="/sessions/:sessionId/export" component={ExportReportPage} />
           <ProtectedRoute path="/sessions/:sessionId/conflict" component={ConflictResolutionPage} />
           <ProtectedRoute path="/sessions/:sessionId" component={PlanningSession} />
           <ProtectedRoute path="/history" component={SessionHistoryPage} />

@@ -41,8 +41,8 @@ const Dashboard: React.FC = () => {
         <div className="mt-4 md:mt-0">
           <Button className="btn-gradient flex items-center" asChild>
             <Link href="/sessions">
-              <Users className="mr-2 h-4 w-4" />
-              Join a Session
+              <PlusCircle className="mr-2 h-4 w-4" />
+              Start New Session
             </Link>
           </Button>
         </div>
@@ -70,10 +70,10 @@ const Dashboard: React.FC = () => {
               <Card className="glass-light card-hover cursor-pointer">
                 <CardContent className="p-6 flex flex-col items-center text-center">
                   <div className="bg-primary-100 p-3 rounded-full mb-4">
-                    <Users className="h-6 w-6 text-primary-700" />
+                    <PlusCircle className="h-6 w-6 text-primary-700" />
                   </div>
-                  <h3 className="font-medium">Join Session</h3>
-                  <p className="text-sm text-gray-500 mt-1">Join an existing planning session</p>
+                  <h3 className="font-medium">New Session</h3>
+                  <p className="text-sm text-gray-500 mt-1">Start a new planning session</p>
                 </CardContent>
               </Card>
             </Link>

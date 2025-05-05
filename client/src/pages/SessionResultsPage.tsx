@@ -126,7 +126,10 @@ export default function SessionResultsPage() {
                   Share Results
                 </Button>
                 
-                <Button className="bg-gradient-to-r from-primary-500 to-primary-600" onClick={handleExportReport}>
+                <Button 
+                  className="bg-gradient-to-r from-primary-500 to-primary-600" 
+                  onClick={() => setLocation(`/sessions/${sessionId}/export`)}
+                >
                   <Download className="h-4 w-4 mr-2" />
                   Export Report
                 </Button>
@@ -368,6 +371,13 @@ export default function SessionResultsPage() {
             <div className="space-x-3">
               <Button onClick={() => setLocation("/history")}>
                 View All Sessions
+              </Button>
+              
+              <Button 
+                className="bg-gradient-to-r from-blue-500 to-blue-600" 
+                onClick={() => setLocation(`/sessions/${sessionId}/sprint-assignment`)}
+              >
+                Sprint Assignment
               </Button>
               
               <Button className="bg-gradient-to-r from-primary-500 to-primary-600" onClick={() => setLocation("/dashboard")}>

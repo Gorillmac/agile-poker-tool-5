@@ -414,10 +414,17 @@ export default function ConflictResolutionPage() {
           </div>
           
           {/* Action Buttons */}
-          <div className="mt-8">
+          <div className="mt-8 flex justify-between">
             <Button variant="outline" onClick={() => setLocation(`/sessions/${sessionId}`)}>
               <ArrowLeft className="h-4 w-4 mr-2" />
               Return to Session
+            </Button>
+            
+            <Button 
+              className="bg-gradient-to-r from-blue-500 to-blue-600"
+              onClick={() => setLocation(`/sessions/${sessionId}/sprint-assignment`)}
+            >
+              Continue to Sprint Assignment
             </Button>
           </div>
         </div>

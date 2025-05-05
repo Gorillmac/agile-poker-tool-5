@@ -87,7 +87,7 @@ export default function SessionSelectionPage() {
           {/* Sessions Container */}
           <Card className="glass">
             <CardHeader>
-              <h2 className="text-xl font-bold">Choose Your Session, Bru</h2>
+              <h2 className="text-xl font-bold">Choose Your Session</h2>
             </CardHeader>
             
             <CardContent>
@@ -135,7 +135,7 @@ export default function SessionSelectionPage() {
                                   onClick={() => handleJoinSession(session.id)}
                                   className="bg-gradient-to-r from-primary-500 to-primary-600"
                                 >
-                                  Join Now, Bru!
+                                  Join Now
                                 </Button>
                               </div>
                             </div>
@@ -192,7 +192,7 @@ export default function SessionSelectionPage() {
                                 variant="outline"
                                 onClick={() => handleJoinSession(session.id)}
                               >
-                                Save it for Later, Bru
+                                Save for Later
                               </Button>
                             </div>
                           </div>
@@ -218,13 +218,13 @@ export default function SessionSelectionPage() {
                 <TabsContent value="create">
                   <form onSubmit={handleCreateSession} className="space-y-4 py-4">
                     <div className="space-y-2">
-                      <Label htmlFor="session-name">Session Name (Make it Lekker!)</Label>
-                      <Input id="session-name" placeholder="e.g., Joburg Sprint Planning 42" required />
+                      <Label htmlFor="session-name">Session Name</Label>
+                      <Input id="session-name" placeholder="e.g., Sprint Planning 42" required />
                     </div>
                     
                     <div className="space-y-2">
                       <Label htmlFor="team">Team Name</Label>
-                      <Input id="team" placeholder="e.g., Cape Town Frontend Okes" required />
+                      <Input id="team" placeholder="e.g., Frontend Development Team" required />
                     </div>
                     
                     <div className="grid grid-cols-2 gap-4">
@@ -242,7 +242,7 @@ export default function SessionSelectionPage() {
                     <div className="pt-4 flex justify-end">
                       <Button type="submit" className="bg-gradient-to-r from-primary-500 to-primary-600">
                         <PlayCircle className="h-4 w-4 mr-1" />
-                        Create Lekker Session, Bru!
+                        Create Session
                       </Button>
                     </div>
                   </form>

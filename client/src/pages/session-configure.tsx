@@ -38,9 +38,9 @@ const SAMPLE_STORIES = [
   {
     id: 3,
     title: "Integration with SnapScan and other SA Payment Methods",
-    description: "As a system administrator, I want to integrate with multiple payment processors so users can choose their preferred payment method.",
+    description: "As a South African user, I want to pay using SnapScan, Zapper, and EFT so I can choose my preferred local payment method without hassles.",
     priority: "high",
-    externalId: "PROJ-125"
+    externalId: "SAFR-125"
   },
 ];
 
@@ -51,7 +51,7 @@ export default function SessionConfigurePage() {
   const [activeTab, setActiveTab] = useState<string>("setup");
   
   // State for session configuration
-  const [sessionName, setSessionName] = useState("Sprint 42 Planning");
+  const [sessionName, setSessionName] = useState("Lekker Sprint 42 Planning");
   const [votingSystem, setVotingSystem] = useState("fibonacci");
   const [timerEnabled, setTimerEnabled] = useState(true);
   const [timerDuration, setTimerDuration] = useState("60");
@@ -124,8 +124,8 @@ export default function SessionConfigurePage() {
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-primary-900">Configure Planning Session</h1>
-            <p className="text-gray-600 mt-2">Set up your session and add user stories to estimate</p>
+            <h1 className="text-3xl font-bold text-primary-900">Configure Your Lekker Planning Session</h1>
+            <p className="text-gray-600 mt-2">Set up your session and add user stories to estimate - no rush, take your time, bru!</p>
           </div>
           
           {/* Configuration Tabs */}
@@ -302,7 +302,7 @@ export default function SessionConfigurePage() {
                     </div>
                     
                     <Button onClick={handleAddManualStory}>
-                      Add Story
+                      Add Lekker Story, Bru!
                     </Button>
                   </div>
                   
@@ -329,7 +329,7 @@ export default function SessionConfigurePage() {
           {/* Action Buttons */}
           <div className="flex justify-between">
             <Button variant="outline" onClick={() => setLocation("/sessions")}>
-              Cancel
+              Ag No Man, Go Back
             </Button>
             
             <div className="space-x-3">
@@ -338,16 +338,16 @@ export default function SessionConfigurePage() {
                 onClick={() => {
                   toast({
                     title: "Session saved",
-                    description: "Your session configuration has been saved as a draft.",
+                    description: "Your lekker session configuration has been saved as a draft, bru!",
                   });
                 }}
               >
                 <Save className="h-4 w-4 mr-2" />
-                Save as Draft
+                Save for Later, Bru
               </Button>
               
               <Button onClick={handleStartSession}>
-                Setup Complete
+                Aweh! Start This Session!
               </Button>
             </div>
           </div>

@@ -13,19 +13,19 @@ import { getInitials } from "@/lib/utils";
 // Mock data for waiting room
 const SESSION_DATA = {
   id: 1,
-  name: "Sprint 42 Planning",
-  team: "Frontend Team",
-  createdBy: "Alex Thompson",
+  name: "Lekker Sprint 42 Planning",
+  team: "Cape Town Frontend Okes",
+  createdBy: "Johannes Smit",
   status: "waiting",
   readiness: 75, // 75% ready
 };
 
-// Mock participants
+// Mock participants with South African names
 const PARTICIPANTS = [
-  { id: 1, name: "Alex Thompson", avatar: undefined, isActive: true, isReady: true, isModerator: true },
-  { id: 2, name: "Maria Garcia", avatar: undefined, isActive: true, isReady: true, isModerator: false },
-  { id: 3, name: "James Wilson", avatar: undefined, isActive: true, isReady: true, isModerator: false },
-  { id: 4, name: "Sarah Chen", avatar: undefined, isActive: true, isReady: false, isModerator: false },
+  { id: 1, name: "Johannes Smit", avatar: undefined, isActive: true, isReady: true, isModerator: true },
+  { id: 2, name: "Lerato Mbeki", avatar: undefined, isActive: true, isReady: true, isModerator: false },
+  { id: 3, name: "Sipho Nkosi", avatar: undefined, isActive: true, isReady: true, isModerator: false },
+  { id: 4, name: "Thandi Zulu", avatar: undefined, isActive: true, isReady: false, isModerator: false },
 ];
 
 export default function WaitingRoomPage() {
@@ -65,7 +65,7 @@ export default function WaitingRoomPage() {
     const timer = setTimeout(() => {
       const newParticipant = {
         id: 5,
-        name: "David Lee",
+        name: "Pieter van der Merwe",
         avatar: undefined,
         isActive: true,
         isReady: false,
@@ -109,7 +109,7 @@ export default function WaitingRoomPage() {
             <div className="flex justify-between items-start">
               <div>
                 <h1 className="text-3xl font-bold text-primary-900">{SESSION_DATA.name}</h1>
-                <p className="text-gray-600 mt-1">Waiting for session to start</p>
+                <p className="text-gray-600 mt-1">Just now waiting for session to start, no stress bru</p>
               </div>
               
               <Badge 
@@ -117,7 +117,7 @@ export default function WaitingRoomPage() {
                 className="border-amber-500 text-amber-700 px-3 py-1"
               >
                 <Clock className="h-4 w-4 mr-1" />
-                Waiting Room
+                Chill Space
               </Badge>
             </div>
             
@@ -130,8 +130,8 @@ export default function WaitingRoomPage() {
             <div className="lg:col-span-1">
               <Card className="glass h-full">
                 <CardHeader>
-                  <CardTitle>Session Info</CardTitle>
-                  <CardDescription>Details about this planning session</CardDescription>
+                  <CardTitle>Lekker Session Info</CardTitle>
+                  <CardDescription>All the details about this kiff planning session</CardDescription>
                 </CardHeader>
                 
                 <CardContent className="space-y-4">

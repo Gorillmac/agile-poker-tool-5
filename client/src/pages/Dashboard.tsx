@@ -42,7 +42,7 @@ const Dashboard: React.FC = () => {
           <Button className="btn-gradient flex items-center" asChild>
             <Link href="/sessions">
               <PlusCircle className="mr-2 h-4 w-4" />
-              Lekker New Session, Bru!
+              Start New Session
             </Link>
           </Button>
         </div>
@@ -61,7 +61,7 @@ const Dashboard: React.FC = () => {
                     <Users className="h-6 w-6 text-primary-700" />
                   </div>
                   <h3 className="font-medium">Create Team</h3>
-                  <p className="text-sm text-gray-500 mt-1">Invite your okes to collaborate</p>
+                  <p className="text-sm text-gray-500 mt-1">Invite team members to collaborate</p>
                 </CardContent>
               </Card>
             </Link>
@@ -73,7 +73,7 @@ const Dashboard: React.FC = () => {
                     <PlusCircle className="h-6 w-6 text-primary-700" />
                   </div>
                   <h3 className="font-medium">New Session</h3>
-                  <p className="text-sm text-gray-500 mt-1">Start a planning session, lekker!</p>
+                  <p className="text-sm text-gray-500 mt-1">Start a new planning session</p>
                 </CardContent>
               </Card>
             </Link>
@@ -144,7 +144,7 @@ const Dashboard: React.FC = () => {
             
             <CardFooter className="pt-0">
               <Button variant="outline" className="w-full" asChild>
-                <Link href="/sessions">View All Sessions, Bru!</Link>
+                <Link href="/sessions">View All Sessions</Link>
               </Button>
             </CardFooter>
           </Card>

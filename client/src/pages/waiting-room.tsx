@@ -13,8 +13,8 @@ import { getInitials } from "@/lib/utils";
 // Mock data for waiting room
 const SESSION_DATA = {
   id: 1,
-  name: "Lekker Sprint 42 Planning",
-  team: "Cape Town Frontend Okes",
+  name: "Sprint 42 Planning",
+  team: "Cape Town Frontend Team",
   createdBy: "Johannes Smit",
   status: "waiting",
   readiness: 75, // 75% ready
@@ -109,7 +109,7 @@ export default function WaitingRoomPage() {
             <div className="flex justify-between items-start">
               <div>
                 <h1 className="text-3xl font-bold text-primary-900">{SESSION_DATA.name}</h1>
-                <p className="text-gray-600 mt-1">Just now waiting for session to start, no stress bru</p>
+                <p className="text-gray-600 mt-1">Waiting for the session to start</p>
               </div>
               
               <Badge 
@@ -117,7 +117,7 @@ export default function WaitingRoomPage() {
                 className="border-amber-500 text-amber-700 px-3 py-1"
               >
                 <Clock className="h-4 w-4 mr-1" />
-                Chill Space
+                Waiting Room
               </Badge>
             </div>
             
@@ -130,8 +130,8 @@ export default function WaitingRoomPage() {
             <div className="lg:col-span-1">
               <Card className="glass h-full">
                 <CardHeader>
-                  <CardTitle>Lekker Session Info</CardTitle>
-                  <CardDescription>All the details about this kiff planning session</CardDescription>
+                  <CardTitle>Session Information</CardTitle>
+                  <CardDescription>Details about this planning session</CardDescription>
                 </CardHeader>
                 
                 <CardContent className="space-y-4">
@@ -149,8 +149,8 @@ export default function WaitingRoomPage() {
                   
                   <div>
                     <div className="mb-2 flex items-center justify-between">
-                      <span className="text-sm text-gray-500">Team Readiness (Lekker Scale)</span>
-                      <span className="text-sm font-medium">{readinessPercentage}% Lekker</span>
+                      <span className="text-sm text-gray-500">Team Readiness</span>
+                      <span className="text-sm font-medium">{readinessPercentage}%</span>
                     </div>
                     <Progress value={readinessPercentage} className="h-2" />
                   </div>

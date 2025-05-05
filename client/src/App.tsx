@@ -18,6 +18,8 @@ import SessionSelection from "@/pages/session-selection";
 import SessionConfigure from "@/pages/session-configure";
 import WaitingRoom from "@/pages/waiting-room";
 import PlanningSession from "@/pages/PlanningSession";
+import SessionResultsPage from "@/pages/SessionResultsPage";
+import SessionHistoryPage from "@/pages/SessionHistoryPage";
 import TeamsPage from "@/pages/TeamsPage";
 import AnalyticsPage from "@/pages/AnalyticsPage";
 import NotFound from "@/pages/not-found";
@@ -41,7 +43,9 @@ function Router() {
           <ProtectedRoute path="/sessions" component={SessionSelection} />
           <ProtectedRoute path="/sessions/configure" component={SessionConfigure} />
           <ProtectedRoute path="/sessions/:sessionId/waiting" component={WaitingRoom} />
+          <ProtectedRoute path="/sessions/:sessionId/results" component={SessionResultsPage} />
           <ProtectedRoute path="/sessions/:sessionId" component={PlanningSession} />
+          <ProtectedRoute path="/history" component={SessionHistoryPage} />
           
           <Route component={NotFound} />
         </Switch>

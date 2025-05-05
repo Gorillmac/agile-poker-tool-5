@@ -115,7 +115,7 @@ export default function SessionConfigurePage() {
     });
     
     // Navigate to the waiting room / active session
-    setLocation("/sessions/1"); // In a real app, would use the actual session ID
+    setLocation("/sessions/1/waiting"); // In a real app, would use the actual session ID
   };
 
   return (

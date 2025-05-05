@@ -89,9 +89,9 @@ export default function SessionSelectionPage() {
             <CardHeader>
               <h2 className="text-xl font-bold">Choose Your Session, Bru</h2>
             </CardHeader>
-
-            <Tabs defaultValue="active" onValueChange={(value) => setActiveTab(value as SessionTabType)}>
-              <CardContent>
+            
+            <CardContent>
+              <Tabs defaultValue="active" onValueChange={(value) => setActiveTab(value as SessionTabType)}>
                 <TabsList className="grid w-full grid-cols-3 mb-6">
                   <TabsTrigger value="active">Active Sessions</TabsTrigger>
                   <TabsTrigger value="scheduled">Scheduled</TabsTrigger>
@@ -247,8 +247,8 @@ export default function SessionSelectionPage() {
                     </div>
                   </form>
                 </TabsContent>
-              </CardContent>
-            </Tabs>
+              </Tabs>
+            </CardContent>
           </Card>
         </div>
       </div>

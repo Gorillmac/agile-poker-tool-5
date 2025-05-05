@@ -39,8 +39,8 @@ import {
 } from "lucide-react";
 import { getInitials } from "@/lib/utils";
 
-// Card values for planning poker
-const CARD_VALUES = ['0', '1', '2', '3', '5', '8', '13', '21', '34', '?', '☕'];
+// Card values for planning poker with South African flair
+const CARD_VALUES = ['0', '1', '2', '3', '5', '8', '13', '21', '34', 'Eish?', '☕ Rooibos'];
 
 type Participant = {
   id: number;
@@ -97,20 +97,20 @@ const PlanningSession = () => {
   const [stories, setStories] = useState<UserStory[]>([
     { 
       id: 1, 
-      title: "User Authentication Implementation", 
-      description: "As a user, I want to be able to register, login, and manage my account so that I can access the system securely.", 
+      title: "Load Shedding-Resilient Authentication", 
+      description: "As a South African user, I want to be able to register and login even during load shedding so I can access the system regardless of power interruptions.", 
       status: 'voting'
     },
     { 
       id: 2, 
-      title: "Dashboard Analytics View", 
-      description: "As a project manager, I want to see team velocity and sprint progress on my dashboard so I can track project health.", 
+      title: "Biltong Dashboard for Sprint Metrics", 
+      description: "As a project manager in Joburg, I want to see team velocity and sprint progress on my dashboard so I can track project health while enjoying biltong.", 
       status: 'pending'
     },
     { 
       id: 3, 
-      title: "API Integration with Payment Gateway", 
-      description: "As a system administrator, I want to integrate with multiple payment processors so users can choose their preferred payment method.", 
+      title: "Integration with SnapScan and other SA Payment Methods", 
+      description: "As a South African user, I want to pay using SnapScan, Zapper, and EFT so I can choose my preferred local payment method without hassles.", 
       status: 'pending'
     },
   ]);
@@ -303,21 +303,24 @@ const PlanningSession = () => {
     );
     
     const report = `
-# Agile Planning Poker Session Report
+# Lekker Agile Planning Poker Session Report
 **Date:** ${new Date().toLocaleDateString()}
-**Participants:** ${participants.map(p => p.name).join(', ')}
+**Participants (Okes):** ${participants.map(p => p.name).join(', ')}
+**Location:** South Africa
 
 ## Estimated Stories
 ${completedStories.map(story => `
 ### ${story.title}
 **Description:** ${story.description}
-**Final Estimate:** ${story.finalEstimate} points
+**Final Estimate:** ${story.finalEstimate} points - Jislaaik!
 `).join('\n')}
 
 ## Summary
 **Total Stories:** ${completedStories.length}
 **Total Story Points:** ${totalPoints}
 **Average Points Per Story:** ${(totalPoints / completedStories.length).toFixed(1)}
+**Biltong Consumed:** Plenty
+**Load Shedding Interruptions:** 0 (we hope!)
     `;
     
     setSessionReport(report);
@@ -343,7 +346,7 @@ ${completedStories.map(story => `
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
           <div className="flex justify-between items-center">
-            <h1 className="text-3xl font-bold text-primary-900">Planning Poker Session</h1>
+            <h1 className="text-3xl font-bold text-primary-900">Howzit Planning Poker Session</h1>
             
             <div className="flex items-center space-x-2">
               <Badge variant="outline" className="flex items-center gap-1 py-1">
@@ -511,7 +514,7 @@ ${completedStories.map(story => `
                     
                     <div className="mt-6">
                       <div className="mb-2 flex justify-between items-center">
-                        <span className="text-sm text-gray-500">Team Consensus</span>
+                        <span className="text-sm text-gray-500">Team Agreement (Lekker!)</span>
                         <span className="text-sm font-medium">{calculateConsensus()}%</span>
                       </div>
                       <Progress value={calculateConsensus()} className="h-2" />
@@ -580,13 +583,13 @@ ${completedStories.map(story => `
                         {isVotingRevealed && (
                           <div>
                             <div className="text-center py-6">
-                              <h3 className="text-lg text-gray-700 mb-2">Consensus Estimate</h3>
+                              <h3 className="text-lg text-gray-700 mb-2">Howzit Estimation, Né?</h3>
                               <div className="inline-flex items-center justify-center h-20 w-20 bg-primary-50 rounded-full border-2 border-primary-300">
                                 <span className="text-3xl font-bold text-primary-700">{getConsensusEstimate() || '?'}</span>
                               </div>
                               
                               <p className="mt-2 text-sm text-gray-500">
-                                {calculateConsensus()}% team consensus
+                                {calculateConsensus()}% team agreement - {calculateConsensus() > 75 ? 'Lekker, bru!' : 'Eish, no consensus!'}
                               </p>
                             </div>
                             
@@ -676,9 +679,9 @@ ${completedStories.map(story => `
       <AlertDialog open={isDiscussionOpen} onOpenChange={setIsDiscussionOpen}>
         <AlertDialogContent className="max-w-3xl">
           <AlertDialogHeader>
-            <AlertDialogTitle>Team Discussion</AlertDialogTitle>
+            <AlertDialogTitle>Let's Have a Lekker Chat</AlertDialogTitle>
             <AlertDialogDescription>
-              The team doesn't have consensus on this story. Discuss the different perspectives to reach a common understanding.
+              Eish! The team doesn't have consensus on this story. Let's have a proper chat to sort this out and reach agreement, South African style.
             </AlertDialogDescription>
           </AlertDialogHeader>
           
@@ -725,9 +728,9 @@ ${completedStories.map(story => `
       <AlertDialog open={showReportDialog} onOpenChange={setShowReportDialog}>
         <AlertDialogContent className="max-w-4xl">
           <AlertDialogHeader>
-            <AlertDialogTitle>Session Report</AlertDialogTitle>
+            <AlertDialogTitle>Lekker Session Report, Bru!</AlertDialogTitle>
             <AlertDialogDescription>
-              Review and export the summary of this planning session.
+              Review and export the summary of this planning session. This report is so lekker, even your boss will be happy with it!
             </AlertDialogDescription>
           </AlertDialogHeader>
           

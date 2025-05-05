@@ -8,11 +8,15 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import { AuthProvider } from "@/hooks/use-auth";
+
+// Pages
 import Home from "@/pages/Home";
-import Register from "@/pages/Register";
-import Login from "@/pages/Login";
+import AuthPage from "@/pages/auth-page";
 import Dashboard from "@/pages/Dashboard";
 import Profile from "@/pages/Profile";
+import SessionSelection from "@/pages/session-selection";
+import SessionConfigure from "@/pages/session-configure";
+import WaitingRoom from "@/pages/waiting-room";
 import PlanningSession from "@/pages/PlanningSession";
 import TeamsPage from "@/pages/TeamsPage";
 import AnalyticsPage from "@/pages/AnalyticsPage";
@@ -25,13 +29,20 @@ function Router() {
       <main className="flex-grow">
         <Switch>
           <Route path="/" component={Home} />
-          <Route path="/register" component={Register} />
-          <Route path="/login" component={Login} />
+          <Route path="/auth" component={AuthPage} />
+          
+          {/* Protected Routes - Following Activity Diagram Flow */}
           <ProtectedRoute path="/dashboard" component={Dashboard} />
           <ProtectedRoute path="/profile" component={Profile} />
-          <ProtectedRoute path="/sessions" component={PlanningSession} />
-          <ProtectedRoute path="/teams" component={TeamsPage} />
           <ProtectedRoute path="/analytics" component={AnalyticsPage} />
+          <ProtectedRoute path="/teams" component={TeamsPage} />
+          
+          {/* Session Flow - According to Activity Diagram */}
+          <ProtectedRoute path="/sessions" component={SessionSelection} />
+          <ProtectedRoute path="/sessions/configure" component={SessionConfigure} />
+          <ProtectedRoute path="/sessions/:sessionId/waiting" component={WaitingRoom} />
+          <ProtectedRoute path="/sessions/:sessionId" component={PlanningSession} />
+          
           <Route component={NotFound} />
         </Switch>
       </main>

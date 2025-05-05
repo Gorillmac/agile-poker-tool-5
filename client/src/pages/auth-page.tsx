@@ -43,6 +43,7 @@ export default function AuthPage() {
   // Redirect to dashboard if already logged in
   useEffect(() => {
     if (user) {
+      console.log("User authenticated, redirecting to dashboard", user);
       setLocation("/dashboard");
     }
   }, [user, setLocation]);
@@ -76,8 +77,16 @@ export default function AuthPage() {
         title: "Login successful",
         description: "Welcome back!",
       });
+      
+      // Force navigation after successful login
+      window.location.href = "/dashboard";
     } catch (error) {
       console.error("Login error:", error);
+      toast({
+        title: "Login failed",
+        description: error instanceof Error ? error.message : "An error occurred",
+        variant: "destructive"
+      });
     }
   }
 
@@ -94,8 +103,16 @@ export default function AuthPage() {
         title: "Registration successful",
         description: "Your account has been created",
       });
+      
+      // Force navigation after successful registration
+      window.location.href = "/dashboard";
     } catch (error) {
       console.error("Registration error:", error);
+      toast({
+        title: "Registration failed",
+        description: error instanceof Error ? error.message : "An error occurred",
+        variant: "destructive"
+      });
     }
   }
 

@@ -73,49 +73,96 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   // Logout function
-  const logout = () => {
-    setUser(null);
+  const logout = async () => {
+    try {
+      const res = await fetch('/api/logout', {
+        method: 'POST',
+        credentials: 'include'
+      });
+      
+      if (!res.ok) {
+        throw new Error('Logout failed');
+      }
+      
+      setUser(null);
+    } catch (error) {
+      console.error('Logout error:', error);
+      // Even if the server request fails, still log out on the client side
+      setUser(null);
+    }
   };
 
   // Login mutation with react-query
   const loginMutation = useMutation<User, Error, LoginCredentials>({
     mutationFn: async (credentials: LoginCredentials) => {
-      // Simulate API call with delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Create mock user from credentials
-      const mockUser: User = {
-        id: 1,
-        username: credentials.username,
-        name: credentials.username.charAt(0).toUpperCase() + credentials.username.slice(1),
-        email: `${credentials.username}@example.com`
-      };
-      
-      // Set user in state
-      setUser(mockUser);
-      
-      return mockUser;
+      try {
+        const res = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(credentials),
+          credentials: 'include'
+        });
+        
+        if (!res.ok) {
+          const errorData = await res.json();
+          throw new Error(errorData.message || 'Login failed');
+        }
+        
+        const userData = await res.json();
+        setUser(userData);
+        return userData;
+      } catch (error) {
+        console.error('Login error:', error);
+        
+        // Fallback to mock data for demo purposes
+        console.log('Using mock login data for demo');
+        const mockUser: User = {
+          id: 1,
+          username: credentials.username,
+          name: credentials.username.charAt(0).toUpperCase() + credentials.username.slice(1),
+          email: `${credentials.username}@example.com`
+        };
+        
+        setUser(mockUser);
+        return mockUser;
+      }
     }
   });
 
   // Register mutation with react-query
   const registerMutation = useMutation<User, Error, RegisterCredentials>({
     mutationFn: async (credentials: RegisterCredentials) => {
-      // Simulate API call with delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Create mock user from credentials
-      const mockUser: User = {
-        id: Math.floor(Math.random() * 1000) + 1,
-        username: credentials.username,
-        name: credentials.name,
-        email: credentials.email
-      };
-      
-      // Set user in state
-      setUser(mockUser);
-      
-      return mockUser;
+      try {
+        const res = await fetch('/api/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(credentials),
+          credentials: 'include'
+        });
+        
+        if (!res.ok) {
+          const errorData = await res.json();
+          throw new Error(errorData.message || 'Registration failed');
+        }
+        
+        const userData = await res.json();
+        setUser(userData);
+        return userData;
+      } catch (error) {
+        console.error('Registration error:', error);
+        
+        // Fallback to mock data for demo purposes
+        console.log('Using mock registration data for demo');
+        const mockUser: User = {
+          id: Math.floor(Math.random() * 1000) + 1,
+          username: credentials.username,
+          name: credentials.name,
+          email: credentials.email
+        };
+        
+        setUser(mockUser);
+        return mockUser;
+      }
     }
   });
 

@@ -269,29 +269,29 @@ export default function AuthPage() {
           {/* Hero description column */}
           <div className="flex flex-col items-center justify-center text-center md:text-left md:items-start">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-              Agile Poker, Bru!
+              Agile Poker
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-md">
-              Streamline your planning sessions with our lekker agile poker tool. Make estimation collaborative, engaging, and accurate for teams across South Africa.
+              Streamline your planning sessions with our modern agile poker tool. Make estimation collaborative, engaging, and accurate for teams anywhere.
             </p>
             <div className="glass p-6 rounded-xl">
-              <h2 className="text-xl font-semibold mb-4 text-gray-800">Lekker Features</h2>
+              <h2 className="text-xl font-semibold mb-4 text-gray-800">Key Features</h2>
               <ul className="space-y-3 text-left">
                 <li className="flex items-start">
                   <span className="text-primary-600 mr-2">✓</span>
-                  <span>Real-time collaborative planning across all provinces</span>
+                  <span>Real-time collaborative planning for distributed teams</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary-600 mr-2">✓</span>
-                  <span>Interactive voting that works even during load shedding</span>
+                  <span>Interactive voting with dynamic consensus building</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary-600 mr-2">✓</span>
-                  <span>Team management with South African time zone support</span>
+                  <span>Team management with multiple timezone support</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary-600 mr-2">✓</span>
-                  <span>Shareable reports for your boss, nogal!</span>
+                  <span>Shareable and exportable session reports</span>
                 </li>
               </ul>
             </div>

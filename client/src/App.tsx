@@ -20,6 +20,8 @@ import WaitingRoom from "@/pages/waiting-room";
 import PlanningSession from "@/pages/PlanningSession";
 import SessionResultsPage from "@/pages/SessionResultsPage";
 import SessionHistoryPage from "@/pages/SessionHistoryPage";
+import ConflictResolutionPage from "@/pages/ConflictResolutionPage";
+import TeamFormationPage from "@/pages/TeamFormationPage";
 import TeamsPage from "@/pages/TeamsPage";
 import AnalyticsPage from "@/pages/AnalyticsPage";
 import NotFound from "@/pages/not-found";
@@ -38,12 +40,14 @@ function Router() {
           <ProtectedRoute path="/profile" component={Profile} />
           <ProtectedRoute path="/analytics" component={AnalyticsPage} />
           <ProtectedRoute path="/teams" component={TeamsPage} />
+          <ProtectedRoute path="/teams/create" component={TeamFormationPage} />
           
           {/* Session Flow - According to Activity Diagram */}
           <ProtectedRoute path="/sessions" component={SessionSelection} />
           <ProtectedRoute path="/sessions/configure" component={SessionConfigure} />
           <ProtectedRoute path="/sessions/:sessionId/waiting" component={WaitingRoom} />
           <ProtectedRoute path="/sessions/:sessionId/results" component={SessionResultsPage} />
+          <ProtectedRoute path="/sessions/:sessionId/conflict" component={ConflictResolutionPage} />
           <ProtectedRoute path="/sessions/:sessionId" component={PlanningSession} />
           <ProtectedRoute path="/history" component={SessionHistoryPage} />
           

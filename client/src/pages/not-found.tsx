@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { AlertCircle, Home, ArrowLeft } from "lucide-react";
+import { Construction, Home, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
@@ -9,18 +9,18 @@ export default function NotFound() {
         <div className="p-8 text-center">
           <div className="flex items-center justify-center mb-6">
             <div className="relative">
-              <div className="absolute inset-0 bg-red-500 blur-xl opacity-20 rounded-full"></div>
-              <div className="relative bg-gradient-to-br from-red-500 to-red-600 p-4 rounded-full">
-                <AlertCircle className="h-8 w-8 text-white" />
+              <div className="absolute inset-0 bg-yellow-500 blur-xl opacity-20 rounded-full"></div>
+              <div className="relative bg-gradient-to-br from-yellow-500 to-yellow-600 p-4 rounded-full">
+                <Construction className="h-8 w-8 text-white" />
               </div>
             </div>
           </div>
           
-          <h1 className="text-4xl font-bold text-white mb-2">404</h1>
-          <h2 className="text-xl font-medium text-gray-300 mb-6">Page Not Found</h2>
+          <h1 className="text-2xl font-bold text-white mb-2">Coming Soon</h1>
+          <h2 className="text-xl font-medium text-gray-300 mb-6">Under Construction</h2>
           
           <p className="text-gray-400 mb-8">
-            The page you are looking for doesn't exist or has been moved.
+            We're currently working on this feature. Please check back later!
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

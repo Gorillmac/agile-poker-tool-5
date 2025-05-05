@@ -81,8 +81,8 @@ export default function AuthPage() {
       
       // Give a small delay to ensure the toast is visible
       setTimeout(() => {
-        // Force navigation after successful login
-        window.location.href = "/dashboard";
+        // Use setLocation instead of window.location.href
+        setLocation("/dashboard");
       }, 500);
     } catch (error) {
       console.error("Login error:", error);
@@ -111,8 +111,8 @@ export default function AuthPage() {
       
       // Give a small delay to ensure the toast is visible
       setTimeout(() => {
-        // Force navigation after successful registration
-        window.location.href = "/dashboard";
+        // Use setLocation instead of window.location.href
+        setLocation("/dashboard");
       }, 500);
     } catch (error) {
       console.error("Registration error:", error);

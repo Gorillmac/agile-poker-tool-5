@@ -24,27 +24,26 @@ The Agile Poker Planning Tool provides a comprehensive digital solution for agil
 ## Technology Stack
 
 - **Frontend**: React.js with TypeScript
-- **UI Framework**: Tailwind CSS with shadcn/ui components
-- **State Management**: React Query for server state, React Context for local state
+- **UI Framework**: Tailwind CSS with customized UI components
+- **State Management**: React Context for application state
 - **Routing**: Wouter for lightweight routing
 - **Forms**: React Hook Form with Zod validation
 - **Drag and Drop**: React Beautiful DnD
 - **Charts**: Recharts for analytics visualizations
-- **Authentication**: Custom authentication system with session persistence
+- **Styling**: Modern glassmorphism effects and custom animations
 
 ## Getting Started
 
 ### Prerequisites
 
 - Node.js 18+ and npm
-- PostgreSQL database (optional, in-memory storage available for development)
 
 ### Installation
 
 1. Clone the repository
    ```
    git clone <repository-url>
-   cd agile-poker-planning-tool
+   cd agile-poker-planning
    ```
 
 2. Install dependencies
@@ -52,19 +51,12 @@ The Agile Poker Planning Tool provides a comprehensive digital solution for agil
    npm install
    ```
 
-3. Configure environment variables
-   Create a `.env` file in the root directory with the following variables:
-   ```
-   DATABASE_URL=postgresql://username:password@localhost:5432/agile_poker
-   SESSION_SECRET=your_session_secret_here
-   ```
-
-4. Start the development server
+3. Start the development server
    ```
    npm run dev
    ```
 
-5. Open your browser and navigate to `http://localhost:5000`
+4. Open your browser and navigate to `http://localhost:5000`
 
 ## Application Flow
 
@@ -84,32 +76,19 @@ The application follows a specific activity flow designed for optimal agile plan
 
 ## Deployment
 
-The application can be deployed on any Node.js-compatible hosting service:
+The application can be deployed on any static hosting service:
 
 1. Build the production-ready application
    ```
    npm run build
    ```
 
-2. Start the production server
-   ```
-   npm start
-   ```
+2. Deploy the contents of the `dist` directory to your hosting service
 
 ## License
 
 This project is proprietary and confidential. Unauthorized copying, distribution, or use is strictly prohibited.
 
-## Contributing
-
-For internal development teams:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
 ## Contact
 
-Project Manager - [your-email@example.com](mailto:your-email@example.com)
+Your Name - [your-email@example.com](mailto:your-email@example.com)

@@ -98,7 +98,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('@assets/heroBackground.svg');
+    background-image: url('/attached_assets/heroBackground.svg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
